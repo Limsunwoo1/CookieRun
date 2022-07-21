@@ -34,7 +34,7 @@ void CTitleScene::Init()
 	AddObject(OBJ_LAYER::BACKGROUND, BackGround);
 
 	CPlayer* Player = new CPlayer();
-	Player->SetPosition(Vector2D(500, 550));
+	Player->SetPosition(Vector2D(200, 550));
 	Player->SetScale(Vector2D(100, 100));
 	Player->SetCollisionScale(Vector2D(100, 100));
 	Player->SetTexture("RUN", "PLAYER_RUN", 6, 30.f);

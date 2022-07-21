@@ -16,7 +16,7 @@ public:
     virtual void Render(HDC InHdc) override;
     virtual void Collision(const CObject* InOtherObject) override;
 
-    void JumpAction(float InDeltaTime);
-    bool DoubleJumpAction(float InDeltaTime);
+    void JumpAction(float InDeltaTime, int Speed);
+    bool DoubleJumpAction(float InDeltaTime, int Speed);
 };
 

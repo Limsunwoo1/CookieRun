@@ -9,16 +9,15 @@
 static bool playerJump = false;
 static bool playerdoubleJump = false;
 static const Vector2D gravity = Vector2D(0.0f, 9.8f);
-const int Upspeed = 450;
 
 CPlayer::CPlayer() : CAnimationObject(Vector2D{ 100, 100 }, Vector2D{ 50, 50 })
 {
-	mVel = Vector2D(0.0f, -3.5f);
+	mVel = Vector2D(0.0f, -2.5f);
 }
 
 CPlayer::CPlayer(Vector2D InVector, Vector2D InScale) : CAnimationObject(Vector2D{ InVector.x , InVector.y }, Vector2D{ InScale.x, InScale.y })
 {
-	mVel = Vector2D(0.0f, -3.5f);
+	mVel = Vector2D(0.0f, -2.5f);
 }
 
 CPlayer::~CPlayer()
@@ -36,11 +35,11 @@ void CPlayer::Init()
 void CPlayer::Update(float InDeltaTime)
 {
 	CAnimationObject::Update(InDeltaTime);
-	int SPEED = 1000;
 
 	if (playerJump)
 	{
-		JumpAction(InDeltaTime);
+		const int Upspeed = 450;
+		JumpAction(InDeltaTime, Upspeed);
 	}
 
 	/*if (KEY_STATE(KEY::A) == KEY_STATE::HOLD)
@@ -83,9 +82,9 @@ void CPlayer::Update(float InDeltaTime)
 		{
 			playerdoubleJump = true;
 
-			SetAnimState("DOUJUMP");
+			/*SetAnimState("JUMP");
 			SetScale(Vector2D(90, 90));
-			SetCollisionScale(Vector2D(90, 90));
+			SetCollisionScale(Vector2D(90, 90));*/
 		}
 	}
 
@@ -123,11 +122,11 @@ void CPlayer::Render(HDC InHdc)
 	CAnimationObject::Render(InHdc);
 }
 
-void CPlayer::JumpAction(float InDeltaTime)
+void CPlayer::JumpAction(float InDeltaTime, int Speed)
 {
 	if (playerdoubleJump)
 	{
-		if (DoubleJumpAction(InDeltaTime))
+		if (DoubleJumpAction(InDeltaTime, Speed))
 			return;
 	}
 
@@ -135,7 +134,7 @@ void CPlayer::JumpAction(float InDeltaTime)
 	{
 		Position.y = 550;
 		playerJump = false;
-		mVel.y = -3.5f;
+		mVel.y = -2.5f;
 
 		SetAnimState("RUN");
 		SetScale(Vector2D(100, 100));
@@ -144,21 +143,23 @@ void CPlayer::JumpAction(float InDeltaTime)
 	}
 
 	mVel += gravity * InDeltaTime;
-	Position += UtilMath::Normalize(mVel) * InDeltaTime * Upspeed;
+	Position += mVel * InDeltaTime * Speed;
 }
 
-bool CPlayer::DoubleJumpAction(float InDeltaTime)
+bool CPlayer::DoubleJumpAction(float InDeltaTime, int Speed)
 {
-	static Vector2D mvel = Vector2D(0.0f, -1.0f);
+	static Vector2D mvel = Vector2D(0.0f, -2.0f);
 	if (Position.y > 551)     // 초기값 세팅후 종료
 	{
 		Position.y = 551;
 		playerdoubleJump = false;
-		mvel.y = -1.0f;
+		mvel.y = -2.0f;
 		return false;
 	}
 
+	static float mprev;
+	mprev = Position.y;
 	mvel += gravity * InDeltaTime ;
-	Position += UtilMath::Normalize(mvel) * InDeltaTime * Upspeed;
+	Position += mvel * InDeltaTime * Speed;
 	return true;
 }
