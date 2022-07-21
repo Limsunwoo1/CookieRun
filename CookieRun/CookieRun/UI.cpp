@@ -3,12 +3,12 @@
 #include "KeyManager.h"
 
 CUI::CUI() 
-: CObject()
+: CSpriteObject()
 {
 }
 
 CUI::CUI(Vector2D InPosition, Vector2D InScale) 
-: CObject(InPosition, InScale)
+: CSpriteObject(InPosition, InScale)
 {
 }
 
@@ -19,7 +19,7 @@ CUI::~CUI()
 
 void CUI::Update(float InDeltaTime)
 {
-	CObject::Update(InDeltaTime);
+	CSpriteObject::Update(InDeltaTime);
 
 	POINT mousePos = MOUSE_POS;
 

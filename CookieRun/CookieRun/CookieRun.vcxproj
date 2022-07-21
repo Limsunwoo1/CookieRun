@@ -154,6 +154,7 @@
     <ClInclude Include="framework.h" />
     <ClInclude Include="Func.h" />
     <ClInclude Include="GameFramework.h" />
+    <ClInclude Include="HpBar.h" />
     <ClInclude Include="KeyManager.h" />
     <ClInclude Include="Loger.h" />
     <ClInclude Include="MainGame.h" />
@@ -187,6 +188,7 @@
     <ClCompile Include="CTitleScene.cpp" />
     <ClCompile Include="EventManager.cpp" />
     <ClCompile Include="GameFramework.cpp" />
+    <ClCompile Include="HpBar.cpp" />
     <ClCompile Include="KeyManager.cpp" />
     <ClCompile Include="Loger.cpp" />
     <ClCompile Include="MainGame.cpp" />

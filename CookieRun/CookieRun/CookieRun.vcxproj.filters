@@ -38,6 +38,15 @@
     <Filter Include="Util\Debug">
       <UniqueIdentifier>{f5023322-517c-4585-8a06-5996a0d28662}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Object\AnimationObject">
+      <UniqueIdentifier>{eb3c1069-8c41-40f5-9860-f5832125a308}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\SpriteObject">
+      <UniqueIdentifier>{95a279e2-cbd1-4377-9cd8-cfc6bef0d7fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\UI\Hp_Bar">
+      <UniqueIdentifier>{7bef6e9e-093e-4746-a3f6-8d4e0a57fd82}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Define.h">
@@ -136,11 +145,14 @@
     <ClInclude Include="UtilString.h">
       <Filter>Util</Filter>
     </ClInclude>
-    <ClInclude Include="AnimationObject.h">
-      <Filter>Object</Filter>
-    </ClInclude>
     <ClInclude Include="SpriteObject.h">
-      <Filter>Object</Filter>
+      <Filter>Object\SpriteObject</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimationObject.h">
+      <Filter>Object\AnimationObject</Filter>
+    </ClInclude>
+    <ClInclude Include="HpBar.h">
+      <Filter>Object\UI\Hp_Bar</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -207,11 +219,14 @@
     <ClCompile Include="CrashHandler.cpp">
       <Filter>Util\Debug</Filter>
     </ClCompile>
-    <ClCompile Include="AnimationObject.cpp">
-      <Filter>Object</Filter>
-    </ClCompile>
     <ClCompile Include="SpriteObject.cpp">
-      <Filter>Object</Filter>
+      <Filter>Object\SpriteObject</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimationObject.cpp">
+      <Filter>Object\AnimationObject</Filter>
+    </ClCompile>
+    <ClCompile Include="HpBar.cpp">
+      <Filter>Object\UI\Hp_Bar</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

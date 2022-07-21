@@ -22,16 +22,14 @@ void CResourceManager::Init(HINSTANCE InHInst, HDC InHdc)
 	Hdc = InHdc;
 
 
+	LoadTexture("BACKGRUOND", L"Texture/cookeiResources/BackGround/First_Background.bmp");
+	LoadTexture("HP_UI", L"Texture/cookeiResources/Utill/hpBar.bmp");
+
 	LoadTexture("PLAYER_RUN",L"Texture/cookeiResources/Cookie/cookie_run!!.bmp");
 	LoadTexture("PLAYER_DEAD", L"Texture/cookeiResources/Cookie/cookie_run_dead.bmp");
-	LoadTexture("PLAYER_JUMP", L"Texture/cookeiResources/Cookie/cookie_run_slide.bmp");
-
-	LoadTexture("BACKGRUOND", L"Texture/cookeiResources/BackGround/First_Background.bmp");
-	LoadTexture("BLOCK", L"Texture/Stage1_Fork2.bmp");
-	LoadTexture("BLOCK2", L"Texture/Stage2_Spear2.bmp");
-
-	LoadTexture("BULLET", L"Texture/BubbleBobblePart2Sheet12.bmp");
-	LoadTexture("BLOCK1", L"Texture/YellowBlock/YellowBlock_2.bmp");
+	LoadTexture("PLAYER_JUMP", L"Texture/cookeiResources/Cookie/cookie_run_jump.bmp");
+	LoadTexture("PLAYER_DOUJUMP", L"Texture/cookeiResources/Cookie/cookie_run_jump2.bmp");
+	LoadTexture("PLAYER_SLIDING", L"Texture/cookeiResources/Cookie/cookie_run_slide.bmp");
 }
 
 CTexture* CResourceManager::LoadTexture(const string& InName, const wstring& InFilePath)

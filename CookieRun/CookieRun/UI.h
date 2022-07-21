@@ -1,7 +1,7 @@
 #pragma once
-#include "Object.h"
+#include "SPriteObject.h"
 class CUI :
-    public CObject
+    public CSpriteObject
 {
 private:
 

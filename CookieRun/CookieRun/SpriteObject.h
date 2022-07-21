@@ -6,7 +6,7 @@ class CTexture;
 class CSpriteObject :
     public CObject
 {
-private:
+protected:
     CTexture* Texture;
 
 public:

@@ -2,6 +2,7 @@
 #include "Func.h"
 #include "Button.h"
 #include "Player.h"
+#include "HpBar.h"
 #include "SpriteObject.h"
 #include "CSceneManager.h"
 #include "ResourceManager.h"
@@ -22,21 +23,26 @@ CTitleScene::~CTitleScene()
 
 void CTitleScene::Init()
 {
-	CPlayer* Player = new CPlayer();
-	Player->SetPosition(Vector2D(500, 550));
-	Player->SetScale(Vector2D(75, 87));
-	Player->SetCollisionScale(Vector2D(75, 87));
-	Player->SetTexture("RUN", "PLAYER_RUN", 6, 30.f);
-	Player->SetTexture("DEAD", "PLAYER_DEAD", 4, 5.f, false);
-	Player->SetTexture("JUMP", "PLAYER_JUMP", 1, 30.f);
-	AddObject(OBJ_LAYER::PLAYER, Player);
+	CHpBar* Hp = new CHpBar();
+	Hp->SetTexture("HP_UI");
+	Hp->SetDynamic_Width();
+	AddObject(OBJ_LAYER::UI, Hp);
 
 	CSpriteObject* BackGround = new CSpriteObject();
 	BackGround->SetPosition(Vector2D(400, 400));
-	/*BackGround->SetScale(Vector2D(50,50));
-	Player->SetCollisionScale(Vector2D(50, 50));*/
 	BackGround->SetTexture("BACKGRUOND");
 	AddObject(OBJ_LAYER::BACKGROUND, BackGround);
+
+	CPlayer* Player = new CPlayer();
+	Player->SetPosition(Vector2D(500, 550));
+	Player->SetScale(Vector2D(100, 100));
+	Player->SetCollisionScale(Vector2D(100, 100));
+	Player->SetTexture("RUN", "PLAYER_RUN", 6, 30.f);
+	Player->SetTexture("DEAD", "PLAYER_DEAD", 4, 5.f, false);
+	Player->SetTexture("JUMP", "PLAYER_JUMP", 1, 30.f, false);
+	Player->SetTexture("DOUJUMP", "PLAYER_DOUJUMP", 1, 30.f, false);
+	Player->SetTexture("SLIDING", "PLAYER_SLIDING", 1, 30.f, false);
+	AddObject(OBJ_LAYER::PLAYER, Player);
 
 	
 	// UI는 충돌체크하면 로직이 꼬일수도 있음 체크해도 UI 끼리만 하도록 주의

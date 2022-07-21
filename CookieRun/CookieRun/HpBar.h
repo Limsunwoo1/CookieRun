@@ -1,0 +1,16 @@
+#pragma once
+#include "UI.h"
+class CHpBar :
+    public CUI
+{
+private:
+    float mDynamic_Width;
+public:
+    CHpBar();
+    ~CHpBar();
+
+    virtual void Update(float InDeltaTime) override;
+    virtual void Render(HDC InHdc);
+
+    void SetDynamic_Width();
+};
