@@ -37,6 +37,7 @@ void CTitleScene::Init()
 	Player->SetPosition(Vector2D(200, 550));
 	Player->SetScale(Vector2D(100, 100));
 	Player->SetCollisionScale(Vector2D(100, 100));
+	Player->SetHP(Hp);
 	Player->SetTexture("RUN", "PLAYER_RUN", 6, 30.f);
 	Player->SetTexture("DEAD", "PLAYER_DEAD", 4, 5.f, false);
 	Player->SetTexture("JUMP", "PLAYER_JUMP", 1, 30.f, false);

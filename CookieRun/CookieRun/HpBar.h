@@ -5,6 +5,7 @@ class CHpBar :
 {
 private:
     float mDynamic_Width;
+    MEMBER(bool, GameStop)
 public:
     CHpBar();
     ~CHpBar();

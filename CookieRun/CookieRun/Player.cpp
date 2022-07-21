@@ -1,6 +1,7 @@
 #include "Player.h"
 #include "KeyManager.h"
 #include "CSceneManager.h"
+#include "HpBar.h"
 #include "ResourceManager.h"
 #include "EventManager.h"
 #include "CTexture.h"
@@ -10,12 +11,14 @@ static bool playerJump = false;
 static bool playerdoubleJump = false;
 static const Vector2D gravity = Vector2D(0.0f, 9.8f);
 
-CPlayer::CPlayer() : CAnimationObject(Vector2D{ 100, 100 }, Vector2D{ 50, 50 })
+CPlayer::CPlayer() : CAnimationObject(Vector2D{ 100, 100 }, Vector2D{ 50, 50 }),
+HP(nullptr)
 {
 	mVel = Vector2D(0.0f, -2.5f);
 }
 
-CPlayer::CPlayer(Vector2D InVector, Vector2D InScale) : CAnimationObject(Vector2D{ InVector.x , InVector.y }, Vector2D{ InScale.x, InScale.y })
+CPlayer::CPlayer(Vector2D InVector, Vector2D InScale) : CAnimationObject(Vector2D{ InVector.x , InVector.y }, Vector2D{ InScale.x, InScale.y }),
+HP(nullptr)
 {
 	mVel = Vector2D(0.0f, -2.5f);
 }
@@ -36,38 +39,22 @@ void CPlayer::Update(float InDeltaTime)
 {
 	CAnimationObject::Update(InDeltaTime);
 
+	if (HP != nullptr && HP->GetGameStop())
+	{
+		SetAnimState("DEAD");
+		SetScale(Vector2D(100, 100));
+		SetCollisionScale(Vector2D(100, 100));
+
+		HP = nullptr;
+		return;
+	}
+
 	if (playerJump)
 	{
 		const int Upspeed = 450;
 		JumpAction(InDeltaTime, Upspeed);
 	}
-
-	/*if (KEY_STATE(KEY::A) == KEY_STATE::HOLD)
-	{
-		Vector2D position = Position;
-		position.x -= SPEED * InDeltaTime;
-
-		if (position.x < 20)
-		{
-			position.x = 20;
-		}
-
-		Position = position;
-	}
-
-	if (KEY_STATE(KEY::D) == KEY_STATE::HOLD)
-	{
-		Vector2D position = Position;
-		position.x += SPEED * InDeltaTime;
-
-		if (position.x > 940)
-		{
-			position.x = 940;
-		}
-
-		Position = position;
-	}*/
-
+	
 	if (KEY_STATE(KEY::SPACE) == KEY_STATE::TAB)
 	{
 		if (!playerJump)
@@ -81,10 +68,6 @@ void CPlayer::Update(float InDeltaTime)
 		else if (playerJump)
 		{
 			playerdoubleJump = true;
-
-			/*SetAnimState("JUMP");
-			SetScale(Vector2D(90, 90));
-			SetCollisionScale(Vector2D(90, 90));*/
 		}
 	}
 

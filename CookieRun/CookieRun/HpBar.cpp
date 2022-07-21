@@ -2,7 +2,8 @@
 #include "CTexture.h"
 
 CHpBar::CHpBar() : CUI(Vector2D(100, 100), Vector2D(600, 50)),
-mDynamic_Width(0.f)
+mDynamic_Width(0.f),
+GameStop(false)
 {
 
 }
@@ -16,14 +17,21 @@ void CHpBar::Update(float InDeltaTime)
 {
     static float Delta = 0.f;
     Delta += InDeltaTime;
+	if (GameStop)
+		return;
+	if (Scale.x <= 30) // 최소 UI는 표시
+	{
+		Scale.x = 30;
+		GameStop = true;
+		return;
+	}
+
     if (Delta > 0.1f)
     {
         Scale.x -= mDynamic_Width;
         Delta -= 0.1f;
     }
 
-    if (Scale.x < 30) // 최소 UI는 표시
-        Scale.x = 30;
 }
 
 void CHpBar::Render(HDC Inhdc)
@@ -61,5 +69,5 @@ void CHpBar::Render(HDC Inhdc)
 
 void CHpBar::SetDynamic_Width()
 {
-    mDynamic_Width = Scale.x / 1000;
+    mDynamic_Width = Scale.x / 100;
 }

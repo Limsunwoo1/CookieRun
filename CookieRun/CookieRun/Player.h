@@ -1,11 +1,14 @@
 #pragma once
 #include "AnimationObject.h"
 
+class CHpBar;
+
 class CPlayer :
     public CAnimationObject
 {
 private:
     Vector2D mVel;
+    CHpBar* HP;
 public:
     CPlayer();
     CPlayer(Vector2D InVector, Vector2D InScale);
@@ -18,5 +21,6 @@ public:
 
     void JumpAction(float InDeltaTime, int Speed);
     bool DoubleJumpAction(float InDeltaTime, int Speed);
+    void SetHP(CHpBar* InHP) { HP = InHP; };
 };
 
