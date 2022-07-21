@@ -62,7 +62,7 @@ void CAnimationObject::Render(HDC InHdc)
 	int Width = (int)TextureMap[CurAnimName].Texture->GetWidth() / TextureMap[CurAnimName].TotalFrame;
 	int Height = (int)TextureMap[CurAnimName].Texture->GetHeight();
 
-	BLENDFUNCTION bf = {};
+	/*BLENDFUNCTION bf = {};
 	bf.BlendOp = AC_SRC_OVER;
 	bf.BlendFlags = 0;
 	bf.AlphaFormat = 0;
@@ -78,7 +78,19 @@ void CAnimationObject::Render(HDC InHdc)
 		0,
 		Width,
 		Height,
-		bf);
+		bf);*/
+
+		TransparentBlt(InHdc,
+		(int)Position.x - (Scale.x * 0.5f),
+		(int)Position.y - (Scale.y * 0.5f),
+		(int)Scale.x,
+		(int)Scale.y,
+		TextureMap[CurAnimName].Texture->GetHdc(),
+		Width * CurFrame,
+		0,
+		Width,
+		Height,
+		RGB(255, 0, 255));
 }
 
 void CAnimationObject::SetTexture(const std::string& InAnimName, CTexture* InTexture, int InFrame, float InSpeed, bool InLoop)

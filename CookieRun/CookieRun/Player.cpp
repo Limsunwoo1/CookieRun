@@ -68,8 +68,27 @@ void CPlayer::Update(float InDeltaTime)
 	if (KEY_STATE(KEY::SPACE) == KEY_STATE::AWAY)
 	{
 		SetAnimState("RUN");
-		SetScale(Vector2D(75, 87));
+		SetScale(Vector2D(200, 348));
 		SetCollisionScale(Vector2D(75, 87));
+
+		Position.y -= 125;
+	}
+
+	if (KEY_STATE(KEY::W) == KEY_STATE::TAB)
+	{
+		SetAnimState("JUMP");
+		SetScale(Vector2D(150, 50));
+		SetCollisionScale(Vector2D(100, 100));
+		Position.y += 25;
+	}
+
+	if (KEY_STATE(KEY::W) == KEY_STATE::AWAY)
+	{
+		SetAnimState("RUN");
+		SetScale(Vector2D(100, 100));
+		SetCollisionScale(Vector2D(100, 100));
+
+		Position.y -= 25;
 	}
 }
 

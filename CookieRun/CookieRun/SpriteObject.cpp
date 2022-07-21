@@ -57,7 +57,7 @@ void CSpriteObject::Render(HDC InHdc)
 	BLENDFUNCTION bf = {};
 	bf.BlendOp = AC_SRC_OVER;
 	bf.BlendFlags = 0;
-	bf.AlphaFormat = AC_SRC_ALPHA;
+	bf.AlphaFormat = 0;
 	bf.SourceConstantAlpha = 255;
 
 	AlphaBlend(InHdc,

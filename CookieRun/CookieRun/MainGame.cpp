@@ -101,11 +101,11 @@ void CMainGame::Update(float InDeltaTime)
 void CMainGame::Render()
 {
 	// ====================================
-	Rectangle(BackHdc, 0, 0, 980, 680);
+	Rectangle(BackHdc, 0, 0, 800, 800);
 
 	CSceneManager::GetInstance()->Render(BackHdc);
 
-	BitBlt(Hdc, 0, 0, 980, 680, BackHdc, 0, 0, SRCCOPY);
+	BitBlt(Hdc, 0, 0, 800, 800, BackHdc, 0, 0, SRCCOPY);
 	// ====================================
 }
 

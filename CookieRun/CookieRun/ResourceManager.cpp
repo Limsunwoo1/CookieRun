@@ -22,13 +22,15 @@ void CResourceManager::Init(HINSTANCE InHInst, HDC InHdc)
 	Hdc = InHdc;
 
 
-	LoadTexture("PLAYER_RUN",L"Texture/cookie_run.bmp");
-	LoadTexture("PLAYER_DEAD", L"Texture/cookie_run_dead.bmp");
+	LoadTexture("PLAYER_RUN",L"Texture/cookeiResources/Cookie/cookie_run!!.bmp");
+	LoadTexture("PLAYER_DEAD", L"Texture/cookeiResources/Cookie/cookie_run_dead.bmp");
+	LoadTexture("PLAYER_JUMP", L"Texture/cookeiResources/Cookie/cookie_run_slide.bmp");
+
+	LoadTexture("BACKGRUOND", L"Texture/cookeiResources/BackGround/First_Background.bmp");
+	LoadTexture("BLOCK", L"Texture/Stage1_Fork2.bmp");
+	LoadTexture("BLOCK2", L"Texture/Stage2_Spear2.bmp");
 
 	LoadTexture("BULLET", L"Texture/BubbleBobblePart2Sheet12.bmp");
-	LoadTexture("BLOCK", L"Texture/YellowBlock/YellowBlock_0.bmp");
-	LoadTexture("BACKGRUOND", L"Texture/graveyard (2).bmp");
-	LoadTexture("BLOCK2", L"Texture/YellowBlock/YellowBlock_1.bmp");
 	LoadTexture("BLOCK1", L"Texture/YellowBlock/YellowBlock_2.bmp");
 }
 

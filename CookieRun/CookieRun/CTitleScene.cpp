@@ -2,6 +2,7 @@
 #include "Func.h"
 #include "Button.h"
 #include "Player.h"
+#include "SpriteObject.h"
 #include "CSceneManager.h"
 #include "ResourceManager.h"
 #include "EventManager.h"
@@ -27,7 +28,15 @@ void CTitleScene::Init()
 	Player->SetCollisionScale(Vector2D(75, 87));
 	Player->SetTexture("RUN", "PLAYER_RUN", 6, 30.f);
 	Player->SetTexture("DEAD", "PLAYER_DEAD", 4, 5.f, false);
+	Player->SetTexture("JUMP", "PLAYER_JUMP", 1, 30.f);
 	AddObject(OBJ_LAYER::PLAYER, Player);
+
+	CSpriteObject* BackGround = new CSpriteObject();
+	BackGround->SetPosition(Vector2D(400, 400));
+	/*BackGround->SetScale(Vector2D(50,50));
+	Player->SetCollisionScale(Vector2D(50, 50));*/
+	BackGround->SetTexture("BACKGRUOND");
+	AddObject(OBJ_LAYER::BACKGROUND, BackGround);
 
 	
 	// UI는 충돌체크하면 로직이 꼬일수도 있음 체크해도 UI 끼리만 하도록 주의
@@ -43,9 +52,6 @@ void CTitleScene::Init()
 	ERROR_LOG("에러 로그 테스트");
 	ETC1_LOG("커스텀 로그 테스트");
 	LOG(STRING("문자열 포매팅 테스트 : %d !!!", 30));
-
-	CButton* Button = new CButton(Vector2D(500, 100), Vector2D(200, 100));
-	AddObject(OBJ_LAYER::UI, Button);
 }
 
 void CTitleScene::Clear()

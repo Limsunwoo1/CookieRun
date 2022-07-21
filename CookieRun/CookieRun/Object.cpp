@@ -1,6 +1,5 @@
 #include "Object.h"
 #include "Define.h"
-
 unsigned int CObject::Id = 100;
 
 static HPEN Green_Pen = CreatePen(PS_SOLID, 1, RGB(0, 255, 0));
