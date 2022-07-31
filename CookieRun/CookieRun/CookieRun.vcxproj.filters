@@ -47,6 +47,27 @@
     <Filter Include="Object\UI\Hp_Bar">
       <UniqueIdentifier>{7bef6e9e-093e-4746-a3f6-8d4e0a57fd82}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Object\Intro">
+      <UniqueIdentifier>{dc089a70-d102-4cc8-8a65-5bc681f29d89}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\CTitleScene">
+      <UniqueIdentifier>{0f9cc4cc-d8f8-4109-9c50-735e047206c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\CIntroScene">
+      <UniqueIdentifier>{170c37a6-df4f-4264-b805-622ea6b0b0e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\CGameStartScene">
+      <UniqueIdentifier>{0863ee64-5ffc-46e2-b325-f4b22001d9b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\PetObject">
+      <UniqueIdentifier>{bda62576-9e70-4011-8ac6-58f7a0064ce9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\CStage1">
+      <UniqueIdentifier>{d7f6f12e-3b4d-4f93-b2ca-68c9e8367bc8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\CShop">
+      <UniqueIdentifier>{551feaf3-8119-4a16-8e65-8449b2f722b6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Define.h">
@@ -95,9 +116,6 @@
       <Filter>Manager</Filter>
     </ClInclude>
     <ClInclude Include="CScene.h">
-      <Filter>Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="CTitleScene.h">
       <Filter>Scene</Filter>
     </ClInclude>
     <ClInclude Include="CTexture.h">
@@ -154,9 +172,29 @@
     <ClInclude Include="HpBar.h">
       <Filter>Object\UI\Hp_Bar</Filter>
     </ClInclude>
-    <ClInclude Include="MainScene.h" />
-    <ClInclude Include="IntroDysPlay.h" />
-    <ClInclude Include="CGameStartScene.h" />
+    <ClInclude Include="IntroDysPlay.h">
+      <Filter>Object\Intro</Filter>
+    </ClInclude>
+    <ClInclude Include="CTitleScene.h">
+      <Filter>Scene\CTitleScene</Filter>
+    </ClInclude>
+    <ClInclude Include="MainScene.h">
+      <Filter>Scene\CIntroScene</Filter>
+    </ClInclude>
+    <ClInclude Include="CGameStartScene.h">
+      <Filter>Scene\CGameStartScene</Filter>
+    </ClInclude>
+    <ClInclude Include="PetObject.h">
+      <Filter>Object\PetObject</Filter>
+    </ClInclude>
+    <ClInclude Include="CStage1.h">
+      <Filter>Scene\CStage1</Filter>
+    </ClInclude>
+    <ClInclude Include="CShop.h">
+      <Filter>Scene\CShop</Filter>
+    </ClInclude>
+    <ClInclude Include="CItemManager.h" />
+    <ClInclude Include="BuyButton.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TimerManager.cpp">
@@ -187,9 +225,6 @@
       <Filter>Manager</Filter>
     </ClCompile>
     <ClCompile Include="CScene.cpp">
-      <Filter>Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="CTitleScene.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
     <ClCompile Include="CTexture.cpp">
@@ -231,9 +266,29 @@
     <ClCompile Include="HpBar.cpp">
       <Filter>Object\UI\Hp_Bar</Filter>
     </ClCompile>
-    <ClCompile Include="MainScene.cpp" />
-    <ClCompile Include="IntroDysPlay.cpp" />
-    <ClCompile Include="CGameStartScene.cpp" />
+    <ClCompile Include="IntroDysPlay.cpp">
+      <Filter>Object\Intro</Filter>
+    </ClCompile>
+    <ClCompile Include="CTitleScene.cpp">
+      <Filter>Scene\CTitleScene</Filter>
+    </ClCompile>
+    <ClCompile Include="MainScene.cpp">
+      <Filter>Scene\CIntroScene</Filter>
+    </ClCompile>
+    <ClCompile Include="CGameStartScene.cpp">
+      <Filter>Scene\CGameStartScene</Filter>
+    </ClCompile>
+    <ClCompile Include="PetObject.cpp">
+      <Filter>Object\PetObject</Filter>
+    </ClCompile>
+    <ClCompile Include="CStage1.cpp">
+      <Filter>Scene\CStage1</Filter>
+    </ClCompile>
+    <ClCompile Include="CShop.cpp">
+      <Filter>Scene\CShop</Filter>
+    </ClCompile>
+    <ClCompile Include="CItemManager.cpp" />
+    <ClCompile Include="BuyButton.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="GameFramework.rc">

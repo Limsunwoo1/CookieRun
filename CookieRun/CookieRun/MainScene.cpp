@@ -1,5 +1,7 @@
 #include "MainScene.h"
 #include "IntroDysPlay.h"
+#include "CGameStartScene.h"
+#include "EventManager.h"
 #include "CSceneManager.h"
 
 CMainScene::CMainScene() : CScene(),
@@ -70,8 +72,11 @@ void CMainScene::Update(float InDeltaTime)
 		else if (kakao)
 			kakao = nullptr;
 
-	/*if (!Direction && !kakao)
-		CSceneManager::SetCurScene();*/
+	if (!Direction && !kakao)
+	{
+		CGameStartScene* start = new CGameStartScene();
+		CEventManager::GetInstance()->ChangeSceneEvent(start);  // 게임 시작페이지 생성
+	}
 }
 
 void CMainScene::MainSceneIntro(CIntroDysPlay* Indev, CIntroDysPlay* Inkakao)

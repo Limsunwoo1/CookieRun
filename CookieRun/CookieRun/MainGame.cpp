@@ -6,6 +6,7 @@
 #include "ResourceManager.h"
 #include "CollisionManager.h"
 #include "EventManager.h"
+#include "CItemManager.h"
 #include "Loger.h"
 #include <iostream>
 #include <windows.h>
@@ -60,6 +61,7 @@ void CMainGame::Init(HWND InHwnd, HINSTANCE InHInstance)
 	CSceneManager::GetInstance()->Init();
 	CCollisionManager::GetInstance()->Init();
 	CEventManager::GetInstance()->Init();
+	CItemManager::GetInstance()->Init();
 	//
 
 	// 더블버퍼링
@@ -88,6 +90,7 @@ void CMainGame::Update(float InDeltaTime)
 {
 	// ====================================
 	CKeyManager::GetInstance()->Update(InDeltaTime);
+	CItemManager::GetInstance()->Update(InDeltaTime);
 	CSceneManager::GetInstance()->Update(InDeltaTime);
 	CCollisionManager::GetInstance()->Update(InDeltaTime);
 	// ====================================
@@ -118,5 +121,6 @@ void CMainGame::Clear()
 	CSceneManager::GetInstance()->DestroyInstance();
 	CCollisionManager::GetInstance()->DestroyInstance();
 	CEventManager::GetInstance()->DestroyInstance();
+	CItemManager::GetInstance()->DestroyInstance();
 	//
 }

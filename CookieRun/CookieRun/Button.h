@@ -1,6 +1,8 @@
 #pragma once
 #include "UI.h"
 #include <string>
+#include "Define.h"
+#include "CTexture.h"
 using namespace std;
 
 // 0 ~ 255 까지만 사용할거라 short 사이즈만큼만 할당하도록
@@ -16,9 +18,9 @@ enum class BUTTON_STATE : short {
 class CButton :
     public CUI
 {
+    PROTECT_MEMBER(String, ClickTexture)
 private:
     string ButtonText;
-
     void (*ButtonFuncPtr[(int)BUTTON_STATE::MAX])();
 
 public:

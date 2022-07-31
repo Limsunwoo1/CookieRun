@@ -52,7 +52,7 @@ void CUI::Update(float InDeltaTime)
 
 void CUI::Render(HDC InHdc)
 {
-	CObject::Render(InHdc);
+	CSpriteObject::Render(InHdc);
 }
 
 bool CUI::CheckMouseCollision(CUI* InUI)
