@@ -105,6 +105,8 @@ void CScene::ClearObject()
 	vector<CObject*>::iterator iter;
 	for (int layer = 0; layer < (int)OBJ_LAYER::MAX; ++layer)
 	{
+		if (layer == (int)OBJ_LAYER::PET)
+			continue;
 		for (iter = OBJvector[layer].begin();iter != OBJvector[layer].end();iter++)
 		{
 			delete *iter;

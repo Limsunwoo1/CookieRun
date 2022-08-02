@@ -4,7 +4,7 @@
 class CIntroDysPlay :
     public CSpriteObject
 {
-    MEMBER(int, alph)
+    MEMBER(int, alpha)
 public:
     CIntroDysPlay();
     ~CIntroDysPlay();

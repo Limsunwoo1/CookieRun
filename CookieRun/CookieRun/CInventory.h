@@ -1,23 +1,17 @@
 #pragma once
 #include "CScene.h"
-#include "PetObject.h"
 #include <map>
-class CShop :
+
+class CButton;
+
+class CInventory :
     public CScene
 {
-public:
-    typedef std::map<std::string, CPetObject*> ItemList;
-
 private:
-    ItemList mItemList;
-
-    CPetObject* SeleteItem;
-    String SeletItemName;
-
-    int xPos;
+    int XPos;
 public:
-    CShop();
-    virtual ~CShop();
+    CInventory();
+    virtual ~CInventory();
 
     virtual void Init() override;
     virtual void Clear() override;

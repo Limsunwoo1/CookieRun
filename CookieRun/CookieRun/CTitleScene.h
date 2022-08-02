@@ -18,5 +18,6 @@ public:
 
     static void InShop();
     static void GameStart();
+    static void InVentory();
 };
 

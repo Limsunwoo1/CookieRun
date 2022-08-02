@@ -145,6 +145,7 @@
     <ClInclude Include="BuyButton.h" />
     <ClInclude Include="CallStackTracer.h" />
     <ClInclude Include="CGameStartScene.h" />
+    <ClInclude Include="CInventory.h" />
     <ClInclude Include="CItemManager.h" />
     <ClInclude Include="CollisionManager.h" />
     <ClInclude Include="CrashHandler.h" />
@@ -172,6 +173,7 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="ResourceManager.h" />
+    <ClInclude Include="SelectButton.h" />
     <ClInclude Include="SpriteObject.h" />
     <ClInclude Include="Struct.h" />
     <ClInclude Include="targetver.h" />
@@ -190,6 +192,7 @@
     <ClCompile Include="BuyButton.cpp" />
     <ClCompile Include="CallStackTracer.cpp" />
     <ClCompile Include="CGameStartScene.cpp" />
+    <ClCompile Include="CInventory.cpp" />
     <ClCompile Include="CItemManager.cpp" />
     <ClCompile Include="CollisionManager.cpp" />
     <ClCompile Include="CrashHandler.cpp" />
@@ -213,6 +216,7 @@
     <ClCompile Include="PetObject.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="ResourceManager.cpp" />
+    <ClCompile Include="SelectButton.cpp" />
     <ClCompile Include="SpriteObject.cpp" />
     <ClCompile Include="TimerManager.cpp" />
     <ClCompile Include="UI.cpp" />

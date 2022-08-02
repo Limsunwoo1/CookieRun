@@ -8,6 +8,8 @@ private:
     CIntroDysPlay* dev;
     CIntroDysPlay* kakao;
 
+    float delta;
+    int setalph;
     bool Direction;
 public:
     CMainScene();

@@ -3,12 +3,16 @@
 #include "CGameStartScene.h"
 #include "EventManager.h"
 #include "CSceneManager.h"
+#include "KeyManager.h"
 
 CMainScene::CMainScene() : CScene(),
 Direction(false)
 {
 	dev = nullptr;
 	kakao = nullptr;
+
+	delta = 0.f;
+	setalph = 0;
 }
 
 CMainScene::~CMainScene()
@@ -40,8 +44,6 @@ void CMainScene::Clear()
 
 void CMainScene::Update(float InDeltaTime)
 {
-	static float delta = 0.f;
-	static int setalph = 0;
 	delta += InDeltaTime;
 
 	if (delta > 0.001f)
@@ -62,9 +64,9 @@ void CMainScene::Update(float InDeltaTime)
 	}
 	
 	if (dev)
-		dev->Setalph(setalph);
+		dev->Setalpha(setalph);
 	else if (kakao)
-		kakao->Setalph(setalph);
+		kakao->Setalpha(setalph);
 		
 	if ((Direction) && (setalph <= 0))
 		if (dev)
@@ -72,7 +74,7 @@ void CMainScene::Update(float InDeltaTime)
 		else if (kakao)
 			kakao = nullptr;
 
-	if (!Direction && !kakao)
+	if ((!Direction && !kakao) || (KEY_STATE(KEY::ESC) == KEY_STATE::AWAY))
 	{
 		CGameStartScene* start = new CGameStartScene();
 		CEventManager::GetInstance()->ChangeSceneEvent(start);  // 게임 시작페이지 생성

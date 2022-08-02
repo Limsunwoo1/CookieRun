@@ -25,6 +25,7 @@ void CResourceManager::Init(HINSTANCE InHInst, HDC InHdc)
 	LoadTexture("BACKGRUOND", L"Texture/cookeiResources/BackGround/First_Background.bmp");
 	LoadTexture("HP_UI", L"Texture/cookeiResources/Utill/hpBar.bmp");
 	LoadTexture("SHOPMAIN", L"Texture/cookeiResources/BackGround/shop_main.bmp");
+	LoadTexture("IVENTORYMAIN", L"Texture/cookeiResources/BackGround/Inventory.bmp");
 
 	LoadTexture("MAINGAME", L"Texture/cookeiResources/BackGround/title.bmp");
 	LoadTexture("DEVSIS", L"Texture/cookeiResources/BackGround/title_CI.bmp");
@@ -44,8 +45,12 @@ void CResourceManager::Init(HINSTANCE InHInst, HDC InHdc)
 	LoadTexture("STARTBTPRESS", L"Texture/cookeiResources/Button/game_start_button_click.bmp");
 	LoadTexture("BUY", L"Texture/cookeiResources/Button/buy_button_click.bmp");
 	LoadTexture("CLICKBUY", L"Texture/cookeiResources/Button/check_button_click.bmp");
-	LoadTexture("INSHOP", L"Texture/cookeiResources/Button/pet_button.bmp");
-	LoadTexture("CLICKSHOP", L"Texture/cookeiResources/Button/pet_button_click.bmp");
+	LoadTexture("INSHOP", L"Texture/cookeiResources/Button/shop.bmp");
+	LoadTexture("CLICKSHOP", L"Texture/cookeiResources/Button/clickshop.bmp");
+	LoadTexture("INVENTORY", L"Texture/cookeiResources/Button/pet_button.bmp");
+	LoadTexture("CLICK_INVENTORY", L"Texture/cookeiResources/Button/pet_button_click.bmp");
+	LoadTexture("SELECTBUTTON", L"Texture/cookeiResources/Button/select_button_click.bmp");
+	LoadTexture("EXIT", L"Texture/cookeiResources/Button/exit_button.bmp");
 }
 
 CTexture* CResourceManager::LoadTexture(const string& InName, const wstring& InFilePath)

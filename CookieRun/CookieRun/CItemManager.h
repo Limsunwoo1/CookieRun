@@ -20,9 +20,11 @@ public:
 	void Update(float InDeltaTime);
 
 	void SetSelectItem(String& InName);
+	CPetObject* GetSelectItem() { return SelectItem; };
 	void SetBuyItem(String& InName);
 	const std::map<String, CPetObject*>& GetItemList()const {return mItemList;};
 
 	CPetObject* FindItem(String& InName);
+	void SettingSelectItem(const String& InName);
 };
 

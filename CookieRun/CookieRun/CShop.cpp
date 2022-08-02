@@ -2,11 +2,15 @@
 #include "PetObject.h"
 #include "CItemManager.h"
 #include "BuyButton.h"
+#include "CSceneManager.h"
+#include "CTitleScene.h"
+#include "EventManager.h"
 #include <map>
 CShop::CShop()
 {
 	SeleteItem = nullptr;
 	SeletItemName = "NONE";
+	xPos = 150;
 }
 
 CShop::~CShop()
@@ -21,10 +25,13 @@ void CShop::Init()
 	BackGround->SetTexture("SHOPMAIN");
 	AddObject(OBJ_LAYER::BACKGROUND, BackGround);
 
+	CButton* ExitBUtton = new CButton(Vector2D{ 700,200 }, Vector2D{ 50,50 });
+	ExitBUtton->SetTexture("EXIT");
+	ExitBUtton->SetButtonFunc(BUTTON_STATE::LBUTTON_RELEASE, Exit);
+	AddObject(OBJ_LAYER::UI, ExitBUtton);
 	///////////////////////////////////////////////////////////////////////////////
 	std::map<String,CPetObject*> InitVct = CItemManager::GetInstance()->GetItemList();
 
-	static int xPos = 150;
 	for (auto iter : InitVct)
 	{
 		mItemList[iter.first] = iter.second;
@@ -34,6 +41,12 @@ void CShop::Init()
 		PetButton->SetClickTexture("CLICKBUY");
 		PetButton->SetItemName(iter.first);
 		xPos += 250;
+
+		if (iter.second->GetPrice() == 0)
+		{
+			PetButton->SetTexture("CLICKBUY");
+			PetButton->SetClickTexture("CLICKBUY");
+		}
 
 		AddObject(OBJ_LAYER::UI, PetButton);
 	}
@@ -48,12 +61,15 @@ void CShop::Clear()
 void CShop::Update(float InDeltaTime)
 {
 	CScene::Update(InDeltaTime);
-	std::map<String, CPetObject*> InitVct = CItemManager::GetInstance()->GetItemList();
+	/*std::map<String, CPetObject*> InitVct = CItemManager::GetInstance()->GetItemList();
 	for (auto iter : InitVct)
 	{
-		if (iter.second->GetPrice() == 0)
-		{
+		
+	}*/
+}
 
-		}
-	}
+void CShop::Exit()
+{
+	CTitleScene* Title = new CTitleScene();
+	CEventManager::GetInstance()->ChangeSceneEvent(Title);
 }

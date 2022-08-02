@@ -2,7 +2,7 @@
 #include "CTexture.h"
 
 CIntroDysPlay::CIntroDysPlay() : CSpriteObject(Vector2D{400,400}, Vector2D{50,50}),
-alph(0)
+alpha(0)
 {
 
 }
@@ -21,7 +21,7 @@ void CIntroDysPlay::Render(HDC InHdc)
 	bf.BlendOp = AC_SRC_OVER;
 	bf.BlendFlags = 0;
 	bf.AlphaFormat = 0;
-	bf.SourceConstantAlpha = alph;
+	bf.SourceConstantAlpha = alpha;
 
 	AlphaBlend(InHdc,
 		(int)(Position.x - (Texture->GetWidth() * 0.5f)),

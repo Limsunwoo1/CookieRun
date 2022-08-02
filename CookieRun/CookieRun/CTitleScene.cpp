@@ -12,6 +12,7 @@
 #include "Loger.h"
 #include "CShop.h"
 #include "CStage1.h"
+#include "CInventory.h"
 #include <string>
 
 CTitleScene::CTitleScene() 
@@ -30,17 +31,23 @@ void CTitleScene::Init()
 	BackGround->SetTexture("LOBBYBACKGRUOND");
 	AddObject(OBJ_LAYER::BACKGROUND, BackGround);
 
-	CButton* Goinshop = new CButton(Vector2D{ 500, 500 }, Vector2D{ 50, 50 });
+	CButton* Goinshop = new CButton(Vector2D{ 730, 200 }, Vector2D{ 50, 50 });
 	Goinshop->SetTexture("INSHOP");
 	Goinshop->SetClickTexture("CLICKSHOP");
-	Goinshop->SetButtonFunc(BUTTON_STATE::LBUTTON_PRESS, InShop);
+	Goinshop->SetButtonFunc(BUTTON_STATE::LBUTTON_RELEASE, InShop);
 	AddObject(OBJ_LAYER::UI, Goinshop);
 
-	CButton* gameStart = new CButton(Vector2D{ 600, 650 }, Vector2D{ 50, 50 });
+	CButton* gameStart = new CButton(Vector2D{ 620, 580 }, Vector2D{ 50, 50 });
 	gameStart->SetTexture("STARTBUTTON");
 	gameStart->SetClickTexture("STARTBTPRESS");
-	gameStart->SetButtonFunc(BUTTON_STATE::LBUTTON_PRESS, GameStart);
+	gameStart->SetButtonFunc(BUTTON_STATE::LBUTTON_RELEASE, GameStart);
 	AddObject(OBJ_LAYER::UI, gameStart);
+
+	CButton* InvenTory = new CButton(Vector2D{ 502, 507 }, Vector2D{ 50, 50 });
+	InvenTory->SetTexture("INVENTORY");
+	InvenTory->SetClickTexture("CLICK_INVENTORY");
+	InvenTory->SetButtonFunc(BUTTON_STATE::LBUTTON_RELEASE, InVentory);
+	AddObject(OBJ_LAYER::UI, InvenTory);
 	
 	// UI는 충돌체크하면 로직이 꼬일수도 있음 체크해도 UI 끼리만 하도록 주의
 
@@ -72,4 +79,10 @@ void CTitleScene::GameStart()
 {
 	CStage1* start = new CStage1();
 	CEventManager::GetInstance()->ChangeSceneEvent(start);
+}
+
+void CTitleScene::InVentory()
+{
+	CInventory* Inventory = new CInventory();
+	CEventManager::GetInstance()->ChangeSceneEvent(Inventory);
 }

@@ -7,6 +7,7 @@ enum class OBJ_LAYER : short {
 	BLOCK = 12,
 	PLAYER = 24,
 	BULLET = 28,
+	PET = 29,
 	UI = 30,
 	MAX = 32,
 };

@@ -17,6 +17,7 @@ enum class KEY
 	SPACE,
 	LBUTTON,
 	RBUTTON,
+	ESC,
 	W,
 	A,
 	S,

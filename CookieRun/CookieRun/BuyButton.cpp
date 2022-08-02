@@ -20,12 +20,5 @@ void CBuyButton::MouseLButtonPress()
 
 void CBuyButton::BuyButton()
 {
-	std::map<String, CPetObject*> InitVct = CItemManager::GetInstance()->GetItemList();
-
-	auto iter = InitVct.find(ITemName);
-	if (iter == InitVct.end())
-		return;
-	
-	String buffer = iter->first;
-	CItemManager::GetInstance()->SetSelectItem(buffer);
+	CItemManager::GetInstance()->SetBuyItem(ITemName);
 }

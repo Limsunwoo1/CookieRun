@@ -3,10 +3,12 @@
 #include "Button.h"
 #include "Player.h"
 #include "HpBar.h"
+#include "PetObject.h"
 #include "SpriteObject.h"
 #include "CSceneManager.h"
 #include "ResourceManager.h"
 #include "EventManager.h"
+#include "CItemManager.h"
 #include "UtilLog.h"
 #include "UtilString.h"
 #include "Loger.h"
@@ -45,6 +47,12 @@ void CStage1::Init()
 	Player->SetTexture("SLIDING", "PLAYER_SLIDING", 1, 30.f, false);
 	AddObject(OBJ_LAYER::PLAYER, Player);
 
+	CPetObject* pet = CItemManager::GetInstance()->GetSelectItem();
+	if (pet)
+	{
+		pet->SetTarget(Player);
+		AddObject(OBJ_LAYER::PET, pet);
+	}
 
 	// UI는 충돌체크하면 로직이 꼬일수도 있음 체크해도 UI 끼리만 하도록 주의
 	std::vector<OBJ_LAYER> checkLayerList;

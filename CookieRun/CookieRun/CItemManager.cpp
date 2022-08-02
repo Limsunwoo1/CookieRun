@@ -42,11 +42,6 @@ void CItemManager::Init()
 
 void CItemManager::Update(float InDeltaTime)
 {
-	if (BuyItem)
-	{
-		BuyItem->SetPrice(0);
-	}
-
 
 }
 
@@ -67,4 +62,16 @@ void CItemManager::SetSelectItem(String& InName)
 void CItemManager::SetBuyItem(String& InName)
 {
 	BuyItem = CItemManager::FindItem(InName);
+	BuyItem->SetPrice(0);
+}
+
+void CItemManager::SettingSelectItem(const String& InName)
+{
+	for (auto iter = mItemList.begin(); iter != mItemList.end(); iter++)
+	{
+		if (iter->second->GetPetName() == InName)
+			iter->second->SetSelectItem(true);
+		else
+			iter->second->SetSelectItem(false);
+	}
 }

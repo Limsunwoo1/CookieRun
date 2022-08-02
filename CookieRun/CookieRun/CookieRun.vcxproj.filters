@@ -68,6 +68,18 @@
     <Filter Include="Scene\CShop">
       <UniqueIdentifier>{551feaf3-8119-4a16-8e65-8449b2f722b6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Scene\CInventory">
+      <UniqueIdentifier>{dedcb3f6-1853-4de7-bf70-950deef54144}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\UI\BuyButton">
+      <UniqueIdentifier>{3e57857d-7e7b-442b-b860-1aadaca8b75d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\UI\BasicButton">
+      <UniqueIdentifier>{d3562c7e-f4e8-419d-b690-ba8ce65fc7ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\UI\SelectButton">
+      <UniqueIdentifier>{3b6e659e-116e-4d4c-8514-255c6338428d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Define.h">
@@ -99,9 +111,6 @@
     </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>Object\Player</Filter>
-    </ClInclude>
-    <ClInclude Include="Button.h">
-      <Filter>Object\UI</Filter>
     </ClInclude>
     <ClInclude Include="UI.h">
       <Filter>Object\UI</Filter>
@@ -193,8 +202,21 @@
     <ClInclude Include="CShop.h">
       <Filter>Scene\CShop</Filter>
     </ClInclude>
-    <ClInclude Include="CItemManager.h" />
-    <ClInclude Include="BuyButton.h" />
+    <ClInclude Include="BuyButton.h">
+      <Filter>Object\UI\BuyButton</Filter>
+    </ClInclude>
+    <ClInclude Include="CItemManager.h">
+      <Filter>Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="Button.h">
+      <Filter>Object\UI\BasicButton</Filter>
+    </ClInclude>
+    <ClInclude Include="CInventory.h">
+      <Filter>Scene\CInventory</Filter>
+    </ClInclude>
+    <ClInclude Include="SelectButton.h">
+      <Filter>Object\UI\SelectButton</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TimerManager.cpp">
@@ -208,9 +230,6 @@
     </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>Object\Player</Filter>
-    </ClCompile>
-    <ClCompile Include="Button.cpp">
-      <Filter>Object\UI</Filter>
     </ClCompile>
     <ClCompile Include="UI.cpp">
       <Filter>Object\UI</Filter>
@@ -287,8 +306,21 @@
     <ClCompile Include="CShop.cpp">
       <Filter>Scene\CShop</Filter>
     </ClCompile>
-    <ClCompile Include="CItemManager.cpp" />
-    <ClCompile Include="BuyButton.cpp" />
+    <ClCompile Include="BuyButton.cpp">
+      <Filter>Object\UI\BuyButton</Filter>
+    </ClCompile>
+    <ClCompile Include="CItemManager.cpp">
+      <Filter>Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="Button.cpp">
+      <Filter>Object\UI\BasicButton</Filter>
+    </ClCompile>
+    <ClCompile Include="CInventory.cpp">
+      <Filter>Scene\CInventory</Filter>
+    </ClCompile>
+    <ClCompile Include="SelectButton.cpp">
+      <Filter>Object\UI\SelectButton</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="GameFramework.rc">

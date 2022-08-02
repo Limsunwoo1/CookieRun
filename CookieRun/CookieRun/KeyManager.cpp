@@ -8,6 +8,7 @@ int KeyArr[(int)KEY::MAX] =
 	VK_SPACE,
 	VK_LBUTTON,
 	VK_RBUTTON,
+	VK_ESCAPE,
 	'W',
 	'A',
 	'S',
