@@ -126,7 +126,7 @@ void CPlayer::JumpAction(float InDeltaTime, int Speed)
 	}
 
 	mVel += gravity * InDeltaTime;
-	Position += mVel * InDeltaTime * Speed;
+	Position += mVel * InDeltaTime * (float)Speed;
 }
 
 bool CPlayer::DoubleJumpAction(float InDeltaTime, int Speed)
@@ -143,6 +143,6 @@ bool CPlayer::DoubleJumpAction(float InDeltaTime, int Speed)
 	/*static float mprev;
 	mprev = Position.y;*/
 	mvel += gravity * InDeltaTime ;
-	Position += mvel * InDeltaTime * Speed;
+	Position += mvel * InDeltaTime * (float)Speed;
 	return true;
 }

@@ -51,6 +51,17 @@ void CResourceManager::Init(HINSTANCE InHInst, HDC InHdc)
 	LoadTexture("CLICK_INVENTORY", L"Texture/cookeiResources/Button/pet_button_click.bmp");
 	LoadTexture("SELECTBUTTON", L"Texture/cookeiResources/Button/select_button_click.bmp");
 	LoadTexture("EXIT", L"Texture/cookeiResources/Button/exit_button.bmp");
+
+	LoadTexture("0", L"Texture/cookeiResources/Button/NumBer(0).bmp");
+	LoadTexture("1", L"Texture/cookeiResources/Button/NumBer(1).bmp");
+	LoadTexture("2", L"Texture/cookeiResources/Button/NumBer(2).bmp");
+	LoadTexture("3", L"Texture/cookeiResources/Button/NumBer(3).bmp");
+	LoadTexture("4", L"Texture/cookeiResources/Button/NumBer(4).bmp");
+	LoadTexture("5", L"Texture/cookeiResources/Button/NumBer(5).bmp");
+	LoadTexture("6", L"Texture/cookeiResources/Button/NumBer(6).bmp");
+	LoadTexture("7", L"Texture/cookeiResources/Button/NumBer(7).bmp");
+	LoadTexture("8", L"Texture/cookeiResources/Button/NumBer(8).bmp");
+	LoadTexture("9", L"Texture/cookeiResources/NumBer/NumBer(9).bmp");
 }
 
 CTexture* CResourceManager::LoadTexture(const string& InName, const wstring& InFilePath)

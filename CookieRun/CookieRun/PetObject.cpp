@@ -44,8 +44,8 @@ void CPetObject::Update(float InDeltaTime)
 void CPetObject::Render(HDC Inhdc)
 {
 	TransparentBlt(Inhdc,
-		(int)Position.x - (Texture->GetWidth() * 0.5f),
-		(int)Position.y - (Texture->GetHeight() * 0.5f),
+		(int)Position.x - ((int)Texture->GetWidth() * 0.5f),
+		(int)Position.y - ((int)Texture->GetHeight() * 0.5f),
 		Texture->GetWidth(),
 		Texture->GetHeight(),
 		Texture->GetHdc(),

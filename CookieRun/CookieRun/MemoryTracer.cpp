@@ -26,7 +26,7 @@ CMemoryTracer::~CMemoryTracer()
 	PrintMemoryBlockAll();
 #endif
 	// 파일로 기록한다
-	_CreateMemoryLeakLogFile();
+	_CreateMemoryLeakLogFile();  //파일로 기록하려면 CreatMemoryLeaK 함수 주석해지
 
 	for (std::pair<const void*, MemoryBlock*> memoryBlockPair : MemoryBlockMap)
 	{

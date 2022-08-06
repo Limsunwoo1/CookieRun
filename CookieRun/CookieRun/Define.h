@@ -47,3 +47,19 @@ protected:													\
 public:														\
 	void Set##name(const type& InValue) {name = InValue;}	\
 	type Get##name() {return name;}
+
+#define FILE_OUTPUT(Buffer)									\
+ifstream LeadFile;											\
+	LeadFile.open("NumBerList.txt");						\
+if(!LeadFile.is_open())										\
+{															\
+	LOG("파일 없음");										\
+	return;													\
+};															\
+int cnt = 0;												\
+while(!LeadFile.eof())										\
+{															\
+	Buffer[cnt] = LeadFile.get();							\
+	cnt++;													\
+};															\
+LeadFile.close();

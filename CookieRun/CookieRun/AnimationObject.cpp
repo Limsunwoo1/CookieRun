@@ -81,8 +81,8 @@ void CAnimationObject::Render(HDC InHdc)
 		bf);*/
 
 		TransparentBlt(InHdc,
-		(int)Position.x - (Scale.x * 0.5f),
-		(int)Position.y - (Scale.y * 0.5f),
+		(int)Position.x - ((int)Scale.x * 0.5f),
+		(int)Position.y - ((int)Scale.y * 0.5f),
 		(int)Scale.x,
 		(int)Scale.y,
 		TextureMap[CurAnimName].Texture->GetHdc(),
