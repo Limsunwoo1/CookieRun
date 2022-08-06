@@ -140,8 +140,8 @@ bool CPlayer::DoubleJumpAction(float InDeltaTime, int Speed)
 		return false;
 	}
 
-	static float mprev;
-	mprev = Position.y;
+	/*static float mprev;
+	mprev = Position.y;*/
 	mvel += gravity * InDeltaTime ;
 	Position += mvel * InDeltaTime * Speed;
 	return true;

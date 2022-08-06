@@ -217,6 +217,7 @@
     <ClInclude Include="SelectButton.h">
       <Filter>Object\UI\SelectButton</Filter>
     </ClInclude>
+    <ClInclude Include="CBankManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TimerManager.cpp">
@@ -321,6 +322,7 @@
     <ClCompile Include="SelectButton.cpp">
       <Filter>Object\UI\SelectButton</Filter>
     </ClCompile>
+    <ClCompile Include="CBankManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="GameFramework.rc">

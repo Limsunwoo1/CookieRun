@@ -12,6 +12,7 @@ CCollisionManager::CCollisionManager()
 
 CCollisionManager::~CCollisionManager()
 {
+
 }
 
 void CCollisionManager::Init()

@@ -7,6 +7,7 @@
 #include "CollisionManager.h"
 #include "EventManager.h"
 #include "CItemManager.h"
+#include "CBankManager.h"
 #include "Loger.h"
 #include <iostream>
 #include <windows.h>
@@ -62,6 +63,7 @@ void CMainGame::Init(HWND InHwnd, HINSTANCE InHInstance)
 	CCollisionManager::GetInstance()->Init();
 	CEventManager::GetInstance()->Init();
 	CItemManager::GetInstance()->Init();
+	CBankManager::GetInstance()->Init();
 	//
 
 	// 더블버퍼링
@@ -93,6 +95,7 @@ void CMainGame::Update(float InDeltaTime)
 	CItemManager::GetInstance()->Update(InDeltaTime);
 	CSceneManager::GetInstance()->Update(InDeltaTime);
 	CCollisionManager::GetInstance()->Update(InDeltaTime);
+	CBankManager::GetInstance()->Update(InDeltaTime);
 	// ====================================
 
 	// Render 되기 직전에 마지막 업데이트
@@ -122,5 +125,6 @@ void CMainGame::Clear()
 	CCollisionManager::GetInstance()->DestroyInstance();
 	CEventManager::GetInstance()->DestroyInstance();
 	CItemManager::GetInstance()->DestroyInstance();
+	CBankManager::GetInstance()->DestroyInstance();
 	//
 }

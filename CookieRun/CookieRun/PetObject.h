@@ -11,6 +11,7 @@ class CPetObject :
     PROTECT_MEMBER(bool, SelectItem)
 private:
     CObject* TargetPlayer;
+    Vector2D DirVec;
 public:
     CPetObject();
     ~CPetObject();

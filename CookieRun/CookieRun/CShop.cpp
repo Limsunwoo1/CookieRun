@@ -40,7 +40,7 @@ void CShop::Init()
 		PetButton->SetTexture("BUY");
 		PetButton->SetClickTexture("CLICKBUY");
 		PetButton->SetItemName(iter.first);
-		xPos += 250;
+		xPos += 240;
 
 		if (iter.second->GetPrice() == 0)
 		{

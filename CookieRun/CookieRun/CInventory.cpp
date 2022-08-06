@@ -52,7 +52,7 @@ void CInventory::Init()
 
 			AddObject(OBJ_LAYER::UI, SeletecButton);
 		}
-		XPos += 250;
+		XPos += 240;
 	}
 	XPos = 150;
 }

@@ -6,6 +6,7 @@
 CItemManager::CItemManager()
 {
 	SelectItem = nullptr;
+	BuyItem = nullptr;
 }
 CItemManager::~CItemManager()
 {
@@ -25,13 +26,13 @@ void CItemManager::Init()
 
 	CPetObject* Dogpet = new CPetObject();
 	Dogpet->SetPetName("Dogpet");
-	Dogpet->SetPrice(200);
+	Dogpet->SetPrice(100);
 	Dogpet->SetTexture("DOGPET");
 	Dogpet->SetTextureName("DOGPET");
 
 	CPetObject* WaferPet = new CPetObject();
 	WaferPet->SetPetName("WaferPet");
-	WaferPet->SetPrice(300);
+	WaferPet->SetPrice(100);
 	WaferPet->SetTexture("WAFERPET");
 	WaferPet->SetTextureName("WAFERPET");
 
