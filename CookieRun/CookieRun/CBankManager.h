@@ -1,5 +1,6 @@
 #pragma once
 #include "Define.h"
+#include "CScoreBord.h"
 #include "Typedef.h"
 #include "framework.h"
 #include <vector>
@@ -11,9 +12,10 @@ private:
 	MEMBER(int, Money)
 
 	std::vector<String> FilePathList;
-	char				Buff[200];
 	int					TextureCount;
+	CScoreBord*			Score;
 
+	char				Buff[200];
 	Vector2D			RanderPos;
 	Vector2D			RanderSca;
 public:

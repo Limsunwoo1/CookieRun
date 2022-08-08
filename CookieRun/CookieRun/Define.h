@@ -48,9 +48,9 @@ public:														\
 	void Set##name(const type& InValue) {name = InValue;}	\
 	type Get##name() {return name;}
 
-#define FILE_OUTPUT(Buffer)									\
+#define FILE_OUTPUT(Buffer, FilePath)						\
 ifstream LeadFile;											\
-	LeadFile.open("NumBerList.txt");						\
+	LeadFile.open(FilePath);								\
 if(!LeadFile.is_open())										\
 {															\
 	LOG("파일 없음");										\

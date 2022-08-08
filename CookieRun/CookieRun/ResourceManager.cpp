@@ -41,6 +41,8 @@ void CResourceManager::Init(HINSTANCE InHInst, HDC InHdc)
 	LoadTexture("DOGPET", L"Texture/cookeiResources/Utill/dog_pet.bmp");
 	LoadTexture("WAFERPET", L"Texture/cookeiResources/Utill/wafer_pet.bmp");
 
+	LoadTexture("JELLY", L"Texture/cookeiResources/Utill/item_jelly.bmp");
+
 	LoadTexture("STARTBUTTON", L"Texture/cookeiResources/Button/game_start_button.bmp");
 	LoadTexture("STARTBTPRESS", L"Texture/cookeiResources/Button/game_start_button_click.bmp");
 	LoadTexture("BUY", L"Texture/cookeiResources/Button/buy_button_click.bmp");
@@ -52,15 +54,15 @@ void CResourceManager::Init(HINSTANCE InHInst, HDC InHdc)
 	LoadTexture("SELECTBUTTON", L"Texture/cookeiResources/Button/select_button_click.bmp");
 	LoadTexture("EXIT", L"Texture/cookeiResources/Button/exit_button.bmp");
 
-	LoadTexture("0", L"Texture/cookeiResources/Button/NumBer(0).bmp");
-	LoadTexture("1", L"Texture/cookeiResources/Button/NumBer(1).bmp");
-	LoadTexture("2", L"Texture/cookeiResources/Button/NumBer(2).bmp");
-	LoadTexture("3", L"Texture/cookeiResources/Button/NumBer(3).bmp");
-	LoadTexture("4", L"Texture/cookeiResources/Button/NumBer(4).bmp");
-	LoadTexture("5", L"Texture/cookeiResources/Button/NumBer(5).bmp");
-	LoadTexture("6", L"Texture/cookeiResources/Button/NumBer(6).bmp");
-	LoadTexture("7", L"Texture/cookeiResources/Button/NumBer(7).bmp");
-	LoadTexture("8", L"Texture/cookeiResources/Button/NumBer(8).bmp");
+	LoadTexture("0", L"Texture/cookeiResources/NumBer/NumBer(0).bmp");
+	LoadTexture("1", L"Texture/cookeiResources/NumBer/NumBer(1).bmp");
+	LoadTexture("2", L"Texture/cookeiResources/NumBer/NumBer(2).bmp");
+	LoadTexture("3", L"Texture/cookeiResources/NumBer/NumBer(3).bmp");
+	LoadTexture("4", L"Texture/cookeiResources/NumBer/NumBer(4).bmp");
+	LoadTexture("5", L"Texture/cookeiResources/NumBer/NumBer(5).bmp");
+	LoadTexture("6", L"Texture/cookeiResources/NumBer/NumBer(6).bmp");
+	LoadTexture("7", L"Texture/cookeiResources/NumBer/NumBer(7).bmp");
+	LoadTexture("8", L"Texture/cookeiResources/NumBer/NumBer(8).bmp");
 	LoadTexture("9", L"Texture/cookeiResources/NumBer/NumBer(9).bmp");
 }
 

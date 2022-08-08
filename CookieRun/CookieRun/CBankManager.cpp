@@ -8,7 +8,7 @@ using namespace std;
 
 CBankManager::CBankManager()
 {
-	Money = 0;
+	Money = 300;
 	TextureCount = 0;
 
 	RanderPos = Vector2D(700, 100);
@@ -21,7 +21,7 @@ CBankManager::~CBankManager()
 
 void CBankManager::Init()
 {
-	FILE_OUTPUT(Buff);
+	FILE_OUTPUT(Buff, "NumBerList.txt");
 	LOG(Buff);
 }
 
@@ -36,18 +36,5 @@ void CBankManager::Update(float InDeltaTIme)
 
 void CBankManager::Render(HDC Inhdc)
 {
-	for (int i = TextureCount; i < 0; i--)
-	{
-		/*TransparentBlt(Inhdc,
-			(int)100 - (Texture->GetWidth() * 0.5f),
-			(int)100 - (Texture->GetHeight() * 0.5f),
-			Texture->GetWidth(),
-			Texture->GetHeight(),
-			Texture->GetHdc(),
-			0,
-			0,
-			Texture->GetWidth(),
-			Texture->GetHeight(),
-			RGB(255, 0, 255));*/
-	};
+	
 }

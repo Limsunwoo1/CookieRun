@@ -4,6 +4,7 @@
 #include "Player.h"
 #include "HpBar.h"
 #include "PetObject.h"
+#include "CScoreBord.h"
 #include "SpriteObject.h"
 #include "CSceneManager.h"
 #include "ResourceManager.h"
@@ -46,6 +47,13 @@ void CStage1::Init()
 	Player->SetTexture("DOUJUMP", "PLAYER_DOUJUMP", 1, 30.f, false);
 	Player->SetTexture("SLIDING", "PLAYER_SLIDING", 1, 30.f, false);
 	AddObject(OBJ_LAYER::PLAYER, Player);
+
+	CScoreBord* score = new CScoreBord();
+	AddObject(OBJ_LAYER::UI, score);
+
+	CButton* Jelly = new CButton(Vector2D{(int)(score->GetPosition().x - 100) ,50},Vector2D{50,50});
+	Jelly->SetTexture("JELLY");
+	AddObject(OBJ_LAYER::UI, Jelly);  //jelly obj 추가 예정
 
 	CPetObject* pet = CItemManager::GetInstance()->GetSelectItem();
 	if (pet)

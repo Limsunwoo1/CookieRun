@@ -80,6 +80,9 @@
     <Filter Include="Object\UI\SelectButton">
       <UniqueIdentifier>{3b6e659e-116e-4d4c-8514-255c6338428d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Object\ScoreBord">
+      <UniqueIdentifier>{4c9c689e-063e-4577-a61e-8c631f5dcf9a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Define.h">
@@ -217,7 +220,12 @@
     <ClInclude Include="SelectButton.h">
       <Filter>Object\UI\SelectButton</Filter>
     </ClInclude>
-    <ClInclude Include="CBankManager.h" />
+    <ClInclude Include="CScoreBord.h">
+      <Filter>Object\ScoreBord</Filter>
+    </ClInclude>
+    <ClInclude Include="CBankManager.h">
+      <Filter>Manager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TimerManager.cpp">
@@ -322,7 +330,12 @@
     <ClCompile Include="SelectButton.cpp">
       <Filter>Object\UI\SelectButton</Filter>
     </ClCompile>
-    <ClCompile Include="CBankManager.cpp" />
+    <ClCompile Include="CScoreBord.cpp">
+      <Filter>Object\ScoreBord</Filter>
+    </ClCompile>
+    <ClCompile Include="CBankManager.cpp">
+      <Filter>Manager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="GameFramework.rc">

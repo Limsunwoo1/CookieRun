@@ -152,6 +152,7 @@
     <ClInclude Include="CrashHandler.h" />
     <ClInclude Include="CScene.h" />
     <ClInclude Include="CSceneManager.h" />
+    <ClInclude Include="CScoreBord.h" />
     <ClInclude Include="CShop.h" />
     <ClInclude Include="CStage1.h" />
     <ClInclude Include="CTexture.h" />
@@ -200,6 +201,7 @@
     <ClCompile Include="CrashHandler.cpp" />
     <ClCompile Include="CScene.cpp" />
     <ClCompile Include="CSceneManager.cpp" />
+    <ClCompile Include="CScoreBord.cpp" />
     <ClCompile Include="CShop.cpp" />
     <ClCompile Include="CStage1.cpp" />
     <ClCompile Include="CTexture.cpp" />
