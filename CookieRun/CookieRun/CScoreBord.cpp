@@ -76,6 +76,8 @@ void CScoreBord::Update(float InDeltaTime)
 
 void CScoreBord::Render(HDC InHdc)
 {
+	IntervalPosX = Position.x;
+
 	for(int i = 0;i < MaxCount; ++i)
 	{
 		SetTexture(FilePathList[buf[i]]);
@@ -94,6 +96,4 @@ void CScoreBord::Render(HDC InHdc)
 
 		IntervalPosX = IntervalPosX - ((Texture->GetWidth() * 0.5f) * 2.f);
 	}
-
-	IntervalPosX = Position.x;
 }

@@ -226,6 +226,7 @@
     <ClInclude Include="CBankManager.h">
       <Filter>Manager</Filter>
     </ClInclude>
+    <ClInclude Include="CGroundObject.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TimerManager.cpp">
@@ -336,6 +337,7 @@
     <ClCompile Include="CBankManager.cpp">
       <Filter>Manager</Filter>
     </ClCompile>
+    <ClCompile Include="CGroundObject.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="GameFramework.rc">

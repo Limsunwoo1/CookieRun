@@ -14,4 +14,5 @@ public:
     virtual void Render(HDC InHdc);
 
     void SetDynamic_Width();
+    float GetDynamic_Width() { return mDynamic_Width; };
 };

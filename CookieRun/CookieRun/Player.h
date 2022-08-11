@@ -20,7 +20,7 @@ public:
     virtual void Collision(const CObject* InOtherObject) override;
 
     void JumpAction(float InDeltaTime, int Speed);
-    bool DoubleJumpAction(float InDeltaTime, int Speed);
+    void DoubleJumpAction(float InDeltaTime, int Speed);
     void SetHP(CHpBar* InHP) { HP = InHP; };
 };
 

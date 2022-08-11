@@ -10,17 +10,19 @@
 static bool playerJump = false;
 static bool playerdoubleJump = false;
 static const Vector2D gravity = Vector2D(0.0f, 9.8f);
+static Vector2D Jmvel = Vector2D(0.0f, -2.5f);
+static Vector2D Dmvel = Vector2D(0.0f, -2.5f);
 
 CPlayer::CPlayer() : CAnimationObject(Vector2D{ 100, 100 }, Vector2D{ 50, 50 }),
 HP(nullptr)
 {
-	mVel = Vector2D(0.0f, -2.5f);
+	mVel = Vector2D(0.0f, 2.5f);
 }
 
 CPlayer::CPlayer(Vector2D InVector, Vector2D InScale) : CAnimationObject(Vector2D{ InVector.x , InVector.y }, Vector2D{ InScale.x, InScale.y }),
 HP(nullptr)
 {
-	mVel = Vector2D(0.0f, -2.5f);
+	mVel = Vector2D(0.0f, 2.5f);
 }
 
 CPlayer::~CPlayer()
@@ -49,12 +51,6 @@ void CPlayer::Update(float InDeltaTime)
 		return;
 	}
 
-	if (playerJump)
-	{
-		const int Upspeed = 450;
-		JumpAction(InDeltaTime, Upspeed);
-	}
-	
 	if (KEY_STATE(KEY::SPACE) == KEY_STATE::TAB)
 	{
 		if (!playerJump)
@@ -74,30 +70,88 @@ void CPlayer::Update(float InDeltaTime)
 	if (KEY_STATE(KEY::W) == KEY_STATE::TAB || KEY_STATE(KEY::W) == KEY_STATE::HOLD)
 	{
 		if (playerdoubleJump || playerJump)
-			return;
+		{
 
-		SetAnimState("SLIDING");
-		SetScale(Vector2D(150, 50));
-		SetCollisionScale(Vector2D(100, 100));
-		Position.y = 575;
+		}
+		else
+		{
+			SetAnimState("SLIDING");
+			SetScale(Vector2D(150, 50));
+			SetCollisionScale(Vector2D(100, 100));
+		}
 	}
 
 	if (KEY_STATE(KEY::W) == KEY_STATE::AWAY)
 	{
 		if (playerdoubleJump || playerJump)
-			return;
+		{ 
 
-		SetAnimState("RUN");
-		SetScale(Vector2D(100, 100));
-		SetCollisionScale(Vector2D(100, 100));
-
-		Position.y = 550;
+		}
+		else
+		{
+			SetAnimState("RUN");
+			SetScale(Vector2D(100, 100));
+			SetCollisionScale(Vector2D(100, 100));
+		}
 	}
+	const int Upspeed = 400;
+	if (playerJump || playerdoubleJump)
+	{
+		if (playerdoubleJump)
+			DoubleJumpAction(InDeltaTime, Upspeed);
+		else if (playerJump)
+			JumpAction(InDeltaTime, Upspeed);
+
+		return;
+	}
+
+	mVel += gravity * InDeltaTime;
+	Position += mVel * InDeltaTime * Upspeed;
 }
 
 void CPlayer::Collision(const CObject* InOtherObject)
 {
 	CObject::Collision(InOtherObject);
+
+	if ((InOtherObject->GetObjectLayer() == OBJ_LAYER::FOOTHOLD) && (Position.y < InOtherObject->GetPosition().y))
+	{
+		if (playerJump)
+		{
+			playerJump = false;
+			Jmvel.y = -2.5f;
+		}
+		if (playerdoubleJump)
+		{
+			playerdoubleJump = false;
+			Dmvel.y = -2.5f;
+		}
+
+		if (CurAnimName == "SLIDING")
+		{
+			Position.y = InOtherObject->GetPosition().y - (InOtherObject->GetScale().y * 0.63f);
+			mVel = Vector2D(0.0f, 2.5f);
+			return;
+		}
+
+		if (CurAnimName == "RUN")
+		{
+
+		}
+		else
+		{
+			SetAnimState("RUN");
+			SetScale(Vector2D(100, 100));
+			SetCollisionScale(Vector2D(100, 100));
+		}
+
+		Position.y = InOtherObject->GetPosition().y - (InOtherObject->GetScale().y * 0.75f);
+		mVel = Vector2D(0.0f, 2.5f);
+		return;
+	}
+
+	Vector2D DeleteHP = HP->GetPosition();
+	DeleteHP.x -= (HP->GetDynamic_Width() * 3);
+	HP->SetPosition(DeleteHP);
 }
 
 void CPlayer::Render(HDC InHdc)
@@ -107,42 +161,12 @@ void CPlayer::Render(HDC InHdc)
 
 void CPlayer::JumpAction(float InDeltaTime, int Speed)
 {
-	if (playerdoubleJump)
-	{
-		if (DoubleJumpAction(InDeltaTime, Speed))
-			return;
-	}
-
-	if (Position.y >= 551)     // 초기값 세팅후 종료
-	{
-		Position.y = 550;
-		playerJump = false;
-		mVel.y = -2.5f;
-
-		SetAnimState("RUN");
-		SetScale(Vector2D(100, 100));
-		SetCollisionScale(Vector2D(100, 100));
-		return;
-	}
-
-	mVel += gravity * InDeltaTime;
-	Position += mVel * InDeltaTime * (float)Speed;
+	Jmvel += gravity * InDeltaTime;
+ 	Position += Jmvel * InDeltaTime * (float)Speed;
 }
 
-bool CPlayer::DoubleJumpAction(float InDeltaTime, int Speed)
+void CPlayer::DoubleJumpAction(float InDeltaTime, int Speed)
 {
-	static Vector2D mvel = Vector2D(0.0f, -2.0f);
-	if (Position.y > 551)     // 초기값 세팅후 종료
-	{
-		Position.y = 551;
-		playerdoubleJump = false;
-		mvel.y = -2.0f;
-		return false;
-	}
-
-	/*static float mprev;
-	mprev = Position.y;*/
-	mvel += gravity * InDeltaTime ;
-	Position += mvel * InDeltaTime * (float)Speed;
-	return true;
+	Dmvel += gravity * InDeltaTime ;
+	Position += Dmvel * InDeltaTime * (float)Speed;
 }

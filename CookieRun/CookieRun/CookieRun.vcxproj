@@ -146,6 +146,7 @@
     <ClInclude Include="CallStackTracer.h" />
     <ClInclude Include="CBankManager.h" />
     <ClInclude Include="CGameStartScene.h" />
+    <ClInclude Include="CGroundObject.h" />
     <ClInclude Include="CInventory.h" />
     <ClInclude Include="CItemManager.h" />
     <ClInclude Include="CollisionManager.h" />
@@ -195,6 +196,7 @@
     <ClCompile Include="CallStackTracer.cpp" />
     <ClCompile Include="CBankManager.cpp" />
     <ClCompile Include="CGameStartScene.cpp" />
+    <ClCompile Include="CGroundObject.cpp" />
     <ClCompile Include="CInventory.cpp" />
     <ClCompile Include="CItemManager.cpp" />
     <ClCompile Include="CollisionManager.cpp" />

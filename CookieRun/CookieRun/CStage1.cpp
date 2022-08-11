@@ -4,6 +4,7 @@
 #include "Player.h"
 #include "HpBar.h"
 #include "PetObject.h"
+#include "CGroundObject.h"
 #include "CScoreBord.h"
 #include "SpriteObject.h"
 #include "CSceneManager.h"
@@ -36,6 +37,26 @@ void CStage1::Init()
 	BackGround->SetTexture("BACKGRUOND");
 	AddObject(OBJ_LAYER::BACKGROUND, BackGround);
 
+	CGroundObject* Stage1Road = new CGroundObject();
+	Stage1Road->SetPosition(Vector2D(400, 700));
+	Stage1Road->SetTexture("STAGE1_ROAD");
+	AddObject(OBJ_LAYER::FOOTHOLD, Stage1Road);
+
+	Stage1Road = new CGroundObject();
+	Stage1Road->SetPosition(Vector2D(600, 700));
+	Stage1Road->SetTexture("STAGE1_ROAD");
+	AddObject(OBJ_LAYER::FOOTHOLD, Stage1Road);
+
+	Stage1Road = new CGroundObject();
+	Stage1Road->SetPosition(Vector2D(800, 700));
+	Stage1Road->SetTexture("STAGE1_ROAD");
+	AddObject(OBJ_LAYER::FOOTHOLD, Stage1Road);
+
+	Stage1Road = new CGroundObject();
+	Stage1Road->SetPosition(Vector2D(1100, 700));
+	Stage1Road->SetTexture("STAGE1_ROAD");
+	AddObject(OBJ_LAYER::FOOTHOLD, Stage1Road);
+
 	CPlayer* Player = new CPlayer();
 	Player->SetPosition(Vector2D(200, 550));
 	Player->SetScale(Vector2D(100, 100));
@@ -65,9 +86,9 @@ void CStage1::Init()
 	// UI는 충돌체크하면 로직이 꼬일수도 있음 체크해도 UI 끼리만 하도록 주의
 	std::vector<OBJ_LAYER> checkLayerList;
 	checkLayerList.push_back(OBJ_LAYER::PLAYER);
-	CheckCollisionLayer[OBJ_LAYER::BULLET] = checkLayerList;
-	checkLayerList.push_back(OBJ_LAYER::BLOCK);
-	CheckCollisionLayer[OBJ_LAYER::BULLET] = checkLayerList;
+	CheckCollisionLayer[OBJ_LAYER::OBSTACLE] = checkLayerList;
+	checkLayerList.push_back(OBJ_LAYER::PLAYER);
+	CheckCollisionLayer[OBJ_LAYER::FOOTHOLD] = checkLayerList;
 
 	LOG_TODO("로그 예시 코드 확인했으면 지워도 무방");
 	LOG("일반 로그 테스트");

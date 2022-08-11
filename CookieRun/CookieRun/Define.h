@@ -39,14 +39,14 @@ private:													\
 	type name;												\
 public:														\
 	void Set##name(const type& InValue) {name = InValue;}	\
-	type Get##name() {return name;}
+	type Get##name() const{return name;}
 
 #define PROTECT_MEMBER(type, name)							\
 protected:													\
 	type name;												\
 public:														\
 	void Set##name(const type& InValue) {name = InValue;}	\
-	type Get##name() {return name;}
+	type Get##name() const{return name;}
 
 #define FILE_OUTPUT(Buffer, FilePath)						\
 ifstream LeadFile;											\
