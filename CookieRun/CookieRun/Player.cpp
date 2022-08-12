@@ -149,9 +149,9 @@ void CPlayer::Collision(const CObject* InOtherObject)
 		return;
 	}
 
-	Vector2D DeleteHP = HP->GetPosition();
+	/*Vector2D DeleteHP = HP->GetPosition();
 	DeleteHP.x -= (HP->GetDynamic_Width() * 3);
-	HP->SetPosition(DeleteHP);
+	HP->SetPosition(DeleteHP);*/
 }
 
 void CPlayer::Render(HDC InHdc)

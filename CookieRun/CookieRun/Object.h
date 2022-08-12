@@ -4,8 +4,8 @@
 
 enum class OBJ_LAYER : short {
 	BACKGROUND = 0,
-	OBSTACLE = 12,
-	FOOTHOLD = 28,
+	FOOTHOLD = 12,
+	OBSTACLE = 14,
 	PLAYER = 24,
 	PET = 29,
 	UI = 30,

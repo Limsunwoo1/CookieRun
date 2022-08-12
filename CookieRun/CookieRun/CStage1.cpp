@@ -7,6 +7,7 @@
 #include "CGroundObject.h"
 #include "CScoreBord.h"
 #include "SpriteObject.h"
+#include "COBST.h"
 #include "CSceneManager.h"
 #include "ResourceManager.h"
 #include "EventManager.h"
@@ -15,6 +16,9 @@
 #include "UtilString.h"
 #include "Loger.h"
 #include <string>
+#include <fstream>
+
+using namespace std;
 
 CStage1::CStage1()
 {
@@ -37,28 +41,8 @@ void CStage1::Init()
 	BackGround->SetTexture("BACKGRUOND");
 	AddObject(OBJ_LAYER::BACKGROUND, BackGround);
 
-	CGroundObject* Stage1Road = new CGroundObject();
-	Stage1Road->SetPosition(Vector2D(400, 700));
-	Stage1Road->SetTexture("STAGE1_ROAD");
-	AddObject(OBJ_LAYER::FOOTHOLD, Stage1Road);
-
-	Stage1Road = new CGroundObject();
-	Stage1Road->SetPosition(Vector2D(600, 700));
-	Stage1Road->SetTexture("STAGE1_ROAD");
-	AddObject(OBJ_LAYER::FOOTHOLD, Stage1Road);
-
-	Stage1Road = new CGroundObject();
-	Stage1Road->SetPosition(Vector2D(800, 700));
-	Stage1Road->SetTexture("STAGE1_ROAD");
-	AddObject(OBJ_LAYER::FOOTHOLD, Stage1Road);
-
-	Stage1Road = new CGroundObject();
-	Stage1Road->SetPosition(Vector2D(1100, 700));
-	Stage1Road->SetTexture("STAGE1_ROAD");
-	AddObject(OBJ_LAYER::FOOTHOLD, Stage1Road);
-
 	CPlayer* Player = new CPlayer();
-	Player->SetPosition(Vector2D(200, 550));
+	Player->SetPosition(Vector2D(200, 400));
 	Player->SetScale(Vector2D(100, 100));
 	Player->SetCollisionScale(Vector2D(100, 100));
 	Player->SetHP(Hp);
@@ -83,11 +67,41 @@ void CStage1::Init()
 		AddObject(OBJ_LAYER::PET, pet);
 	}
 
+	static int x = 0;
+	String st;
+	int cnt = 1;
+	ifstream readFile;
+	readFile.open("TXT/Stage1.txt");
+	if (!readFile.is_open())
+	{
+		LOG("파일 없음");
+		return;
+	}		
+	while (!readFile.eof())
+	{
+		if (cnt >= 10)
+		{
+			cnt -= 9;
+			x += 800;
+		}
+
+		getline(readFile, st);
+		MapDesign(st, cnt, x);
+		LOG(st)
+		cnt++;
+	}
+	readFile.close();
+	x = 0;
+
+	//FILE_OUTPUT(str, "Stage1.txt")
+
 	// UI는 충돌체크하면 로직이 꼬일수도 있음 체크해도 UI 끼리만 하도록 주의
 	std::vector<OBJ_LAYER> checkLayerList;
 	checkLayerList.push_back(OBJ_LAYER::PLAYER);
 	CheckCollisionLayer[OBJ_LAYER::OBSTACLE] = checkLayerList;
 	checkLayerList.push_back(OBJ_LAYER::PLAYER);
+	CheckCollisionLayer[OBJ_LAYER::FOOTHOLD] = checkLayerList;
+	checkLayerList.push_back(OBJ_LAYER::OBSTACLE);
 	CheckCollisionLayer[OBJ_LAYER::FOOTHOLD] = checkLayerList;
 
 	LOG_TODO("로그 예시 코드 확인했으면 지워도 무방");
@@ -106,4 +120,82 @@ void CStage1::Clear()
 void CStage1::Update(float InDeltaTime)
 {
 	CScene::Update(InDeltaTime);
+}
+
+void CStage1::Render(HDC Inhdc)
+{
+	CScene::Render(Inhdc);
+}
+
+void CStage1::MapDesign(String Instr, int cnt,int x)
+{
+	float height = 800 / 8;
+	float width = 800 / 10;
+	CGroundObject* Stage1Road;
+	for (int i = 0; i < Instr.size(); i++)
+	{
+		switch (Instr[i])
+		{
+		case '1':
+		{
+			Stage1Road = new CGroundObject();
+			Stage1Road->SetPosition(Vector2D(((width * (i + 1)) + x), height * cnt));
+			Stage1Road->SetTexture("STAGE1_ROAD1");
+			AddObject(OBJ_LAYER::FOOTHOLD, Stage1Road);
+			break;
+		}
+		case'2':
+		{
+			COBST* obs2 = new COBST();
+			obs2->SetPosition(Vector2D(((width * (i + 1)) + x), height * cnt));
+			obs2->SetTexture("STAGE1_ROAD2");
+			AddObject(OBJ_LAYER::OBSTACLE, obs2);
+			break;
+		}
+		case'3':
+		{
+			COBST* obs3 = new COBST();
+			obs3->SetPosition(Vector2D(((width * (i + 1)) + x), height * cnt));
+			obs3->SetTexture("STAGE1_ROAD3");
+			AddObject(OBJ_LAYER::OBSTACLE, obs3);
+			break;
+		}
+		case'4':
+		{
+			COBST* obs4 = new COBST();
+			obs4->SetPosition(Vector2D(((width * (i + 1)) + x), height * cnt));
+			obs4->SetTexture("STAGE1_ROAD4");
+			AddObject(OBJ_LAYER::OBSTACLE, obs4);
+			break;
+		}
+		case'5':
+		{
+			COBST* obs5 = new COBST();
+			obs5->SetPosition(Vector2D(((width * (i + 1)) + x), height * cnt));
+			obs5->SetTexture("STAGE1_ROAD5");
+			AddObject(OBJ_LAYER::OBSTACLE, obs5);
+			break;
+		}
+		case'6':
+		{
+			COBST* obs6 = new COBST();
+			obs6->SetPosition(Vector2D(((width * (i + 1)) + x), height * cnt));
+			obs6->SetTexture("STAGE1_ROAD6");
+			AddObject(OBJ_LAYER::OBSTACLE, obs6);
+			break;
+		}
+		case'7':
+		{
+			COBST* obs7 = new COBST();
+			obs7->SetPosition(Vector2D(((width * (i + 1)) + x), height * cnt));
+			obs7->SetTexture("STAGE1_ROAD7");
+			AddObject(OBJ_LAYER::OBSTACLE, obs7);
+			break;
+		}
+		default:
+		{
+			break;
+		}
+		}
+	}
 }

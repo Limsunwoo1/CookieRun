@@ -10,7 +10,7 @@ CBankManager::CBankManager()
 {
 	Money = 300;
 	TextureCount = 0;
-
+	Score = nullptr;
 	RanderPos = Vector2D(700, 100);
 	RanderSca = Vector2D(0, 0);
 }
@@ -21,7 +21,7 @@ CBankManager::~CBankManager()
 
 void CBankManager::Init()
 {
-	FILE_OUTPUT(Buff, "NumBerList.txt");
+	//FILE_OUTPUT(Buff, "NumBerList.txt");
 	LOG(Buff);
 }
 

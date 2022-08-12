@@ -49,17 +49,20 @@ public:														\
 	type Get##name() const{return name;}
 
 #define FILE_OUTPUT(Buffer, FilePath)						\
-ifstream LeadFile;											\
-	LeadFile.open(FilePath);								\
-if(!LeadFile.is_open())										\
+ifstream readFile;											\
+readFile.open(FilePath);									\
+if(!readFile.is_open())										\
 {															\
 	LOG("파일 없음");										\
 	return;													\
-};															\
+}															\
 int cnt = 0;												\
-while(!LeadFile.eof())										\
+while(!readFile.eof())										\
 {															\
-	Buffer[cnt] = LeadFile.get();							\
 	cnt++;													\
-};															\
-LeadFile.close();
+	std::string str;										\
+	getline(readFile, str);									\
+	Buffer.push_back(str);									\
+}															\
+readFile.close();
+//Buffer[cnt] = LeadFile.get();							\

@@ -66,7 +66,13 @@ void CResourceManager::Init(HINSTANCE InHInst, HDC InHdc)
 	LoadTexture("9", L"Texture/cookeiResources/NumBer/NumBer(9).bmp");
 
 	//STAGE1
-	LoadTexture("STAGE1_ROAD", L"Texture/cookeiResources/Stage1/First_ground.bmp");
+	LoadTexture("STAGE1_ROAD1", L"Texture/cookeiResources/Stage1/First_ground.bmp");
+	LoadTexture("STAGE1_ROAD2", L"Texture/cookeiResources/Stage1/Stage1_Fork.bmp");
+	LoadTexture("STAGE1_ROAD3", L"Texture/cookeiResources/Stage1/Stage1_thorn.bmp");
+	LoadTexture("STAGE1_ROAD4", L"Texture/cookeiResources/Stage1/Stage1_thorn2.bmp");
+	LoadTexture("STAGE1_ROAD5", L"Texture/cookeiResources/Stage1/Stage1_thorn3.bmp");
+	LoadTexture("STAGE1_ROAD6", L"Texture/cookeiResources/Stage1/Stage1_thorn4.bmp");
+	LoadTexture("STAGE1_ROAD7", L"Texture/cookeiResources/Stage1/Stage1_thorn5.bmp");
 }
 
 CTexture* CResourceManager::LoadTexture(const string& InName, const wstring& InFilePath)

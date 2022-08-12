@@ -14,5 +14,7 @@ public:
     virtual void Clear() override;   // 현재 씬의 정보를 전부 소멸시킨다
 
     virtual void Update(float InDeltaTime) override;
+    virtual void Render(HDC Inhdc) override;
+    void MapDesign(String Instr, int cnt, int x);
 };
 

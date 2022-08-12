@@ -1,4 +1,6 @@
 #include "CGroundObject.h"
+#include "CSceneManager.h"
+#include <vector>
 
 CGroundObject::CGroundObject() : CSpriteObject()
 {
@@ -17,7 +19,11 @@ CGroundObject::~CGroundObject()
 
 void CGroundObject::Update(float InDeltaTime)
 {
-	Position.x -= InDeltaTime * 200;
+	if (Position.x < -5000)
+		Position.x = 2000;
+
+	CSpriteObject::Update(InDeltaTime);
+	Position.x -= InDeltaTime * 300;
 }
 
 void CGroundObject::Collision(const CObject* InOtherObject)

@@ -83,6 +83,9 @@
     <Filter Include="Object\ScoreBord">
       <UniqueIdentifier>{4c9c689e-063e-4577-a61e-8c631f5dcf9a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Object\CGroundObject">
+      <UniqueIdentifier>{626bc615-8773-4e9f-8697-7bc11d4c0943}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Define.h">
@@ -226,7 +229,10 @@
     <ClInclude Include="CBankManager.h">
       <Filter>Manager</Filter>
     </ClInclude>
-    <ClInclude Include="CGroundObject.h" />
+    <ClInclude Include="CGroundObject.h">
+      <Filter>Object\CGroundObject</Filter>
+    </ClInclude>
+    <ClInclude Include="COBST.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TimerManager.cpp">
@@ -337,7 +343,10 @@
     <ClCompile Include="CBankManager.cpp">
       <Filter>Manager</Filter>
     </ClCompile>
-    <ClCompile Include="CGroundObject.cpp" />
+    <ClCompile Include="CGroundObject.cpp">
+      <Filter>Object\CGroundObject</Filter>
+    </ClCompile>
+    <ClCompile Include="COBST.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="GameFramework.rc">
