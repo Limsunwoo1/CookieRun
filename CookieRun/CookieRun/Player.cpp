@@ -6,6 +6,9 @@
 #include "EventManager.h"
 #include "CTexture.h"
 #include "UtilMath.h"
+#include "UtilLog.h"
+#include "UtilString.h"
+#include "UtilMath.h"
 
 static bool playerJump = false;
 static bool playerdoubleJump = false;
@@ -14,13 +17,17 @@ static Vector2D Jmvel = Vector2D(0.0f, -2.5f);
 static Vector2D Dmvel = Vector2D(0.0f, -2.5f);
 
 CPlayer::CPlayer() : CAnimationObject(Vector2D{ 100, 100 }, Vector2D{ 50, 50 }),
-HP(nullptr)
+HP(nullptr),
+delta(2.f),
+diving(false)
 {
 	mVel = Vector2D(0.0f, 2.5f);
 }
 
 CPlayer::CPlayer(Vector2D InVector, Vector2D InScale) : CAnimationObject(Vector2D{ InVector.x , InVector.y }, Vector2D{ InScale.x, InScale.y }),
-HP(nullptr)
+HP(nullptr),
+delta(2.f),
+diving(false)
 {
 	mVel = Vector2D(0.0f, 2.5f);
 }
@@ -40,14 +47,26 @@ void CPlayer::Init()
 void CPlayer::Update(float InDeltaTime)
 {
 	CAnimationObject::Update(InDeltaTime);
+	delta += InDeltaTime;
 
+	if (CheckDiving(InDeltaTime))
+		return;
+
+	const int Upspeed = 400;
 	if (HP != nullptr && HP->GetGameStop())
 	{
 		SetAnimState("DEAD");
 		SetScale(Vector2D(100, 100));
-		SetCollisionScale(Vector2D(100, 100));
+		SetCollisionScale(Vector2D(Scale.x * 0.9f, Scale.y * 0.9f));
 
 		HP = nullptr;
+		return;
+	}
+	else if (!HP)
+	{
+		mVel += gravity * InDeltaTime;
+		Position += mVel * InDeltaTime * Upspeed;
+
 		return;
 	}
 
@@ -59,7 +78,7 @@ void CPlayer::Update(float InDeltaTime)
 
 			SetAnimState("JUMP");
 			SetScale(Vector2D(90, 90));
-			SetCollisionScale(Vector2D(90, 90));
+			SetCollisionScale(Vector2D(Scale.x * 0.9f, Scale.y * 0.9f));
 		}
 		else if (playerJump)
 		{
@@ -91,10 +110,10 @@ void CPlayer::Update(float InDeltaTime)
 		{
 			SetAnimState("RUN");
 			SetScale(Vector2D(100, 100));
-			SetCollisionScale(Vector2D(100, 100));
+			SetCollisionScale(Vector2D(Scale.x * 0.9f, Scale.y * 0.9f));
 		}
 	}
-	const int Upspeed = 400;
+
 	if (playerJump || playerdoubleJump)
 	{
 		if (playerdoubleJump)
@@ -112,6 +131,9 @@ void CPlayer::Update(float InDeltaTime)
 void CPlayer::Collision(const CObject* InOtherObject)
 {
 	CObject::Collision(InOtherObject);
+
+	if (diving)
+		return;
 
 	if ((InOtherObject->GetObjectLayer() == OBJ_LAYER::FOOTHOLD) && (Position.y < InOtherObject->GetPosition().y))
 	{
@@ -137,11 +159,15 @@ void CPlayer::Collision(const CObject* InOtherObject)
 		{
 
 		}
+		else if(CurAnimName == "DEAD")
+		{
+		
+		}
 		else
 		{
 			SetAnimState("RUN");
 			SetScale(Vector2D(100, 100));
-			SetCollisionScale(Vector2D(100, 100));
+			SetCollisionScale(Vector2D(Scale.x * 0.9f, Scale.y * 0.9f));
 		}
 
 		Position.y = InOtherObject->GetPosition().y - (InOtherObject->GetScale().y * 0.75f);
@@ -149,9 +175,17 @@ void CPlayer::Collision(const CObject* InOtherObject)
 		return;
 	}
 
-	/*Vector2D DeleteHP = HP->GetPosition();
-	DeleteHP.x -= (HP->GetDynamic_Width() * 3);
-	HP->SetPosition(DeleteHP);*/
+	if (delta > 2.0f)
+	{
+		if (!HP)
+			return;
+
+		Vector2D DeleteHP = HP->GetScale();
+		DeleteHP.x -= (HP->GetDynamic_Width() * 3);
+		HP->SetScale(DeleteHP);
+
+		delta -= 2.0f;
+	}
 }
 
 void CPlayer::Render(HDC InHdc)
@@ -169,4 +203,28 @@ void CPlayer::DoubleJumpAction(float InDeltaTime, int Speed)
 {
 	Dmvel += gravity * InDeltaTime ;
 	Position += Dmvel * InDeltaTime * (float)Speed;
+}
+
+bool CPlayer::CheckDiving(float InDeltaTime)
+{
+	if (Position.y > 1000)
+	{
+		diving = true;
+
+		mVel = Vector2D(0.0f, -10.0f);
+	}
+
+	if (diving)
+	{
+		if (Position.y < 400)
+		{
+			mVel = Vector2D(0.0f, 0.1f);
+			diving = false;
+			return diving;
+		}
+
+		Position += UtilMath::Normalize(mVel) * InDeltaTime * 500;
+	}
+
+	return diving;
 }

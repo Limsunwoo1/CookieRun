@@ -1,5 +1,8 @@
 #pragma once
 #include "CScene.h"
+
+class CScoreBord;
+
 class CStage1 :
     public CScene
 {
@@ -15,6 +18,6 @@ public:
 
     virtual void Update(float InDeltaTime) override;
     virtual void Render(HDC Inhdc) override;
-    void MapDesign(String Instr, int cnt, int x);
+    void MapDesign(String Instr, int cnt, int x, CScoreBord* InSCor);
 };
 

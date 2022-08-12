@@ -23,5 +23,8 @@ public:
 
     virtual void Update(float InDeltaTime) override;
     virtual void Render(HDC InHdc) override;
+
+    int GetScore() const { return Score; };
+    void SetScore(int jelly) {Score = jelly;};
 };
 

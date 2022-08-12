@@ -33,13 +33,13 @@ CScoreBord::~CScoreBord()
 
 void CScoreBord::Update(float InDeltaTime)
 {
-	static float delt = 0.f;
-	delt += InDeltaTime;
-	if (delt > 0.001f)
-	{
-		Score++;
-		delt = -0.001f;
-	}
+	//static float delt = 0.f;
+	//delt += InDeltaTime;
+	//if (delt > 0.001f)
+	//{
+	//	Score++;
+	//	delt = -0.001f;
+	//}
 
 	buf[0] = Score;
 

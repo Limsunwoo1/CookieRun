@@ -19,13 +19,9 @@ COBST::~COBST()
 
 void COBST::Update(float InDeltaTIme)
 {
-	/*if (Position.x < -50)
-	{
-		std::vector<CObject*> Vct;
-		Vct = CSceneManager::GetInstance()->Get_Object(OBJ_LAYER::OBSTACLE);
-		Position.x = Vct.end()[-1]->GetPosition().x + 800;
-		return;
-	}*/
+	if (Position.x < -5000)
+		Position.x = 2000;
+
 	CSpriteObject::Update(InDeltaTIme);
 	Position.x -= InDeltaTIme * 300;
 }
@@ -33,8 +29,8 @@ void COBST::Update(float InDeltaTIme)
 void COBST::Render(HDC Inhdc)
 {
 	TransparentBlt(Inhdc,
-		(int)Position.x - (Texture->GetWidth() * 0.5f),
-		(int)Position.y - (Texture->GetHeight() * 0.5f),
+		Position.x - (Texture->GetWidth() * 0.5f),
+		Position.y - (Texture->GetHeight() * 0.5f),
 		Texture->GetWidth(),
 		Texture->GetHeight(),
 		Texture->GetHdc(),

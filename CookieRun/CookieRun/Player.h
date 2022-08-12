@@ -9,6 +9,9 @@ class CPlayer :
 private:
     Vector2D mVel;
     CHpBar* HP;
+    
+    float delta;
+    bool diving;
 public:
     CPlayer();
     CPlayer(Vector2D InVector, Vector2D InScale);
@@ -22,5 +25,6 @@ public:
     void JumpAction(float InDeltaTime, int Speed);
     void DoubleJumpAction(float InDeltaTime, int Speed);
     void SetHP(CHpBar* InHP) { HP = InHP; };
+    bool CheckDiving(float InDeltaTime);
 };
 

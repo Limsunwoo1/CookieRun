@@ -15,6 +15,7 @@
 #include "UtilLog.h"
 #include "UtilString.h"
 #include "Loger.h"
+#include "CJellyObject.h"
 #include <string>
 #include <fstream>
 
@@ -42,9 +43,9 @@ void CStage1::Init()
 	AddObject(OBJ_LAYER::BACKGROUND, BackGround);
 
 	CPlayer* Player = new CPlayer();
-	Player->SetPosition(Vector2D(200, 400));
+	Player->SetPosition(Vector2D(200, 100));
 	Player->SetScale(Vector2D(100, 100));
-	Player->SetCollisionScale(Vector2D(100, 100));
+	Player->SetCollisionScale(Vector2D(Player->GetScale().x * 0.9f, Player->GetScale().y * 0.9f));
 	Player->SetHP(Hp);
 	Player->SetTexture("RUN", "PLAYER_RUN", 6, 30.f);
 	Player->SetTexture("DEAD", "PLAYER_DEAD", 4, 5.f, false);
@@ -79,21 +80,19 @@ void CStage1::Init()
 	}		
 	while (!readFile.eof())
 	{
-		if (cnt >= 10)
+		if (cnt >= 12)
 		{
-			cnt -= 9;
+			cnt -= 11;
 			x += 800;
 		}
 
 		getline(readFile, st);
-		MapDesign(st, cnt, x);
+		MapDesign(st, cnt, x, score);
 		LOG(st)
 		cnt++;
 	}
 	readFile.close();
 	x = 0;
-
-	//FILE_OUTPUT(str, "Stage1.txt")
 
 	// UI는 충돌체크하면 로직이 꼬일수도 있음 체크해도 UI 끼리만 하도록 주의
 	std::vector<OBJ_LAYER> checkLayerList;
@@ -101,6 +100,8 @@ void CStage1::Init()
 	CheckCollisionLayer[OBJ_LAYER::OBSTACLE] = checkLayerList;
 	checkLayerList.push_back(OBJ_LAYER::PLAYER);
 	CheckCollisionLayer[OBJ_LAYER::FOOTHOLD] = checkLayerList;
+	checkLayerList.push_back(OBJ_LAYER::PLAYER);
+	CheckCollisionLayer[OBJ_LAYER::ITEM] = checkLayerList;
 	checkLayerList.push_back(OBJ_LAYER::OBSTACLE);
 	CheckCollisionLayer[OBJ_LAYER::FOOTHOLD] = checkLayerList;
 
@@ -127,10 +128,10 @@ void CStage1::Render(HDC Inhdc)
 	CScene::Render(Inhdc);
 }
 
-void CStage1::MapDesign(String Instr, int cnt,int x)
+void CStage1::MapDesign(String Instr, int cnt, int x, CScoreBord* InSCor)
 {
-	float height = 800 / 8;
-	float width = 800 / 10;
+	float height = 800 / 10;
+	float width = 800 / 20;
 	CGroundObject* Stage1Road;
 	for (int i = 0; i < Instr.size(); i++)
 	{
@@ -190,6 +191,15 @@ void CStage1::MapDesign(String Instr, int cnt,int x)
 			obs7->SetPosition(Vector2D(((width * (i + 1)) + x), height * cnt));
 			obs7->SetTexture("STAGE1_ROAD7");
 			AddObject(OBJ_LAYER::OBSTACLE, obs7);
+			break;
+		}
+		case'9':
+		{
+			CJellyObject* jelly = new CJellyObject();
+			jelly->SetPosition(Vector2D(((width * (i + 1)) + x), height * cnt));
+			jelly->SetTexture("JELLY");
+			jelly->SetScore(InSCor);
+			AddObject(OBJ_LAYER::ITEM, jelly);
 			break;
 		}
 		default:

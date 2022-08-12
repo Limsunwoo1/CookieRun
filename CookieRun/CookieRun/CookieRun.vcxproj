@@ -149,6 +149,7 @@
     <ClInclude Include="CGroundObject.h" />
     <ClInclude Include="CInventory.h" />
     <ClInclude Include="CItemManager.h" />
+    <ClInclude Include="CJellyObject.h" />
     <ClInclude Include="COBST.h" />
     <ClInclude Include="CollisionManager.h" />
     <ClInclude Include="CrashHandler.h" />
@@ -200,6 +201,7 @@
     <ClCompile Include="CGroundObject.cpp" />
     <ClCompile Include="CInventory.cpp" />
     <ClCompile Include="CItemManager.cpp" />
+    <ClCompile Include="CJellyObject.cpp" />
     <ClCompile Include="COBST.cpp" />
     <ClCompile Include="CollisionManager.cpp" />
     <ClCompile Include="CrashHandler.cpp" />

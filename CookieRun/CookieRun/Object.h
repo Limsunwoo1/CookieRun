@@ -4,6 +4,7 @@
 
 enum class OBJ_LAYER : short {
 	BACKGROUND = 0,
+	ITEM = 5,
 	FOOTHOLD = 12,
 	OBSTACLE = 14,
 	PLAYER = 24,

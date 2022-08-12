@@ -233,6 +233,7 @@
       <Filter>Object\CGroundObject</Filter>
     </ClInclude>
     <ClInclude Include="COBST.h" />
+    <ClInclude Include="CJellyObject.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TimerManager.cpp">
@@ -347,6 +348,7 @@
       <Filter>Object\CGroundObject</Filter>
     </ClCompile>
     <ClCompile Include="COBST.cpp" />
+    <ClCompile Include="CJellyObject.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="GameFramework.rc">
