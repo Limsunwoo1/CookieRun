@@ -45,7 +45,7 @@ void CStage1::Init()
 	CPlayer* Player = new CPlayer();
 	Player->SetPosition(Vector2D(200, 100));
 	Player->SetScale(Vector2D(100, 100));
-	Player->SetCollisionScale(Vector2D(Player->GetScale().x * 0.9f, Player->GetScale().y * 0.9f));
+	Player->SetCollisionScale(Vector2D(Player->GetScale().x * 0.8f, Player->GetScale().y * 0.8f));
 	Player->SetHP(Hp);
 	Player->SetTexture("RUN", "PLAYER_RUN", 6, 30.f);
 	Player->SetTexture("DEAD", "PLAYER_DEAD", 4, 5.f, false);

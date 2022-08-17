@@ -57,7 +57,7 @@ void CPlayer::Update(float InDeltaTime)
 	{
 		SetAnimState("DEAD");
 		SetScale(Vector2D(100, 100));
-		SetCollisionScale(Vector2D(Scale.x * 0.9f, Scale.y * 0.9f));
+		SetCollisionScale(Vector2D(Scale.x * 0.8f, Scale.y * 0.8f));
 
 		HP = nullptr;
 		return;
@@ -78,7 +78,7 @@ void CPlayer::Update(float InDeltaTime)
 
 			SetAnimState("JUMP");
 			SetScale(Vector2D(90, 90));
-			SetCollisionScale(Vector2D(Scale.x * 0.9f, Scale.y * 0.9f));
+			SetCollisionScale(Vector2D(Scale.x * 0.8f, Scale.y * 0.8f));
 		}
 		else if (playerJump)
 		{
@@ -110,7 +110,7 @@ void CPlayer::Update(float InDeltaTime)
 		{
 			SetAnimState("RUN");
 			SetScale(Vector2D(100, 100));
-			SetCollisionScale(Vector2D(Scale.x * 0.9f, Scale.y * 0.9f));
+			SetCollisionScale(Vector2D(Scale.x * 0.8f, Scale.y * 0.8f));
 		}
 	}
 

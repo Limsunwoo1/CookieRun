@@ -27,4 +27,3 @@ public:
     int GetScore() const { return Score; };
     void SetScore(int jelly) {Score = jelly;};
 };
-
