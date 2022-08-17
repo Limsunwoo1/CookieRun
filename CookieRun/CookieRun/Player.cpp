@@ -96,7 +96,7 @@ void CPlayer::Update(float InDeltaTime)
 		{
 			SetAnimState("SLIDING");
 			SetScale(Vector2D(150, 50));
-			SetCollisionScale(Vector2D(100, 100));
+			SetCollisionScale(Vector2D(Scale.x * 0.8f, Scale.y * 0.8f));
 		}
 	}
 
