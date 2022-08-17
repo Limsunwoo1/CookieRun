@@ -1,7 +1,32 @@
 #include "CScoreBord.h"
 #include "CTexture.h"
 
-CScoreBord::CScoreBord() : CUI(Vector2D {750,50}, Vector2D {50,50}),
+CScoreBord::CScoreBord() : CUI(Vector2D {650,50}, Vector2D {50,50}),
+MaxCount(1),
+Score(0)
+{
+	FilePathList.push_back("0");
+	FilePathList.push_back("1");
+	FilePathList.push_back("2");
+	FilePathList.push_back("3");
+	FilePathList.push_back("4");
+	FilePathList.push_back("5");
+	FilePathList.push_back("6");
+	FilePathList.push_back("7");
+	FilePathList.push_back("8");
+	FilePathList.push_back("9");
+
+	bufsize = 20;
+
+	for (int i = 0; i < bufsize; ++i)
+	{
+		buf[i] = 0;
+	}
+
+	IntervalPosX = Position.x;
+}
+
+CScoreBord::CScoreBord(Vector2D InPos, Vector2D InScale) : CUI(Vector2D{ InPos.x,InPos.y }, Vector2D{ InScale.x,InScale.y }),
 MaxCount(1),
 Score(0)
 {

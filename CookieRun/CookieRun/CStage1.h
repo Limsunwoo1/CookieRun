@@ -2,12 +2,13 @@
 #include "CScene.h"
 
 class CScoreBord;
+class CPlayer;
 
 class CStage1 :
     public CScene
 {
-protected:
-
+private:
+    CPlayer* mPlayer;
 
 public:
     CStage1();
@@ -19,5 +20,7 @@ public:
     virtual void Update(float InDeltaTime) override;
     virtual void Render(HDC Inhdc) override;
     void MapDesign(String Instr, int cnt, int x, CScoreBord* InSCor);
+
+    static void PAUSE();
 };
 

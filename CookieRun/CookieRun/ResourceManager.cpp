@@ -26,6 +26,7 @@ void CResourceManager::Init(HINSTANCE InHInst, HDC InHdc)
 	LoadTexture("HP_UI", L"Texture/cookeiResources/Utill/hpBar.bmp");
 	LoadTexture("SHOPMAIN", L"Texture/cookeiResources/BackGround/shop_main.bmp");
 	LoadTexture("IVENTORYMAIN", L"Texture/cookeiResources/BackGround/Inventory.bmp");
+	LoadTexture("PAUSEBACKGROUN", L"Texture/cookeiResources/BackGround/pause_background11.bmp");
 
 	LoadTexture("MAINGAME", L"Texture/cookeiResources/BackGround/title.bmp");
 	LoadTexture("DEVSIS", L"Texture/cookeiResources/BackGround/title_CI.bmp");
@@ -52,7 +53,10 @@ void CResourceManager::Init(HINSTANCE InHInst, HDC InHdc)
 	LoadTexture("INVENTORY", L"Texture/cookeiResources/Button/pet_button.bmp");
 	LoadTexture("CLICK_INVENTORY", L"Texture/cookeiResources/Button/pet_button_click.bmp");
 	LoadTexture("SELECTBUTTON", L"Texture/cookeiResources/Button/select_button_click.bmp");
-	LoadTexture("EXIT", L"Texture/cookeiResources/Button/exit_button.bmp");
+	LoadTexture("EXIT", L"Texture/cookeiResources/Button/exit_button11.bmp");
+	LoadTexture("RETURN", L"Texture/cookeiResources/return iconBMP.bmp");
+	LoadTexture("REPLAY", L"Texture/cookeiResources/replayiconBMP.bmp");
+	LoadTexture("XBUTTON", L"Texture/cookeiResources/Button/Xbutton.bmp");
 
 	LoadTexture("0", L"Texture/cookeiResources/NumBer/NumBer(0).bmp");
 	LoadTexture("1", L"Texture/cookeiResources/NumBer/NumBer(1).bmp");

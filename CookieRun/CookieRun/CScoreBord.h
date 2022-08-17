@@ -19,6 +19,7 @@ private:
     unsigned int        bufsize;
 public:
     CScoreBord();
+    CScoreBord(Vector2D InPos, Vector2D InScale);
     ~CScoreBord();
 
     virtual void Update(float InDeltaTime) override;

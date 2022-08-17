@@ -13,7 +13,8 @@
 
 
 CSceneManager::CSceneManager()
-: CurScene(nullptr)
+: CurScene(nullptr),
+ReGame(nullptr)
 {
 
 }
@@ -23,6 +24,13 @@ CSceneManager::~CSceneManager()
 	CurScene->Clear();
 	delete CurScene;
 	CurScene = nullptr;
+
+	if (ReGame)
+	{
+		ReGame->Clear();
+		delete ReGame;
+		ReGame = nullptr;
+	}
 }
 
 void CSceneManager::Init()
@@ -33,6 +41,12 @@ void CSceneManager::Init()
 
 void CSceneManager::Update(float InDeltaTime)
 {
+	if (ReGame)
+	{
+		ReGame->Update(InDeltaTime);
+		return;
+	}
+
 	CurScene->Update(InDeltaTime);
 }
 
@@ -44,6 +58,9 @@ void CSceneManager::LateUpdate(float InDeltaTime)
 void CSceneManager::Render(HDC InHdc)
 {
 	CurScene->Render(InHdc);
+
+	if (ReGame)
+		ReGame->Render(InHdc);
 
 #ifdef SHOW_COLLISION
 	CurScene->CollisionRender(InHdc);
@@ -78,4 +95,20 @@ void CSceneManager::DeleteObject(OBJ_LAYER InLayer, CObject* InObject)
 const std::vector<CObject*>& CSceneManager::Get_Object(OBJ_LAYER InLayer)
 {
 	return CurScene->Get_Object(InLayer);
+}
+
+void CSceneManager::SetReGame(CScene* InScene)
+{
+	ReGame = InScene;
+	ReGame->Init();
+}
+
+void CSceneManager::ClearReGame()
+{
+	if (ReGame)
+	{
+		ReGame->Clear();
+		delete ReGame;
+		ReGame = nullptr;
+	}
 }

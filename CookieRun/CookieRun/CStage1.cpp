@@ -14,6 +14,7 @@
 #include "CItemManager.h"
 #include "UtilLog.h"
 #include "UtilString.h"
+#include "CPAUSE.h"
 #include "Loger.h"
 #include "CJellyObject.h"
 #include <string>
@@ -52,6 +53,8 @@ void CStage1::Init()
 	Player->SetTexture("JUMP", "PLAYER_JUMP", 1, 30.f, false);
 	Player->SetTexture("DOUJUMP", "PLAYER_DOUJUMP", 1, 30.f, false);
 	Player->SetTexture("SLIDING", "PLAYER_SLIDING", 1, 30.f, false);
+
+	mPlayer = Player;
 	AddObject(OBJ_LAYER::PLAYER, Player);
 
 	CScoreBord* score = new CScoreBord();
@@ -60,6 +63,11 @@ void CStage1::Init()
 	CButton* Jelly = new CButton(Vector2D{(int)(score->GetPosition().x - 100) ,50},Vector2D{50,50});
 	Jelly->SetTexture("JELLY");
 	AddObject(OBJ_LAYER::UI, Jelly);  //jelly obj 추가 예정
+
+	CButton* pause = new CButton(Vector2D{ 750,50 }, Vector2D{ 50,50 });
+	pause->SetTexture("EXIT");
+	pause->SetButtonFunc(BUTTON_STATE::LBUTTON_RELEASE, PAUSE);
+	AddObject(OBJ_LAYER::UI, pause);
 
 	CPetObject* pet = CItemManager::GetInstance()->GetSelectItem();
 	if (pet)
@@ -120,7 +128,13 @@ void CStage1::Clear()
 
 void CStage1::Update(float InDeltaTime)
 {
-	CScene::Update(InDeltaTime);
+	if (mPlayer->GetPlayerHP())
+		CScene::Update(InDeltaTime);
+	else
+	{
+		mPlayer->Update(InDeltaTime);
+
+	}
 }
 
 void CStage1::Render(HDC Inhdc)
@@ -208,4 +222,10 @@ void CStage1::MapDesign(String Instr, int cnt, int x, CScoreBord* InSCor)
 		}
 		}
 	}
+}
+
+void CStage1::PAUSE()
+{
+	CPAUSE* pause = new CPAUSE();
+	CSceneManager::GetInstance()->SetReGame(pause);
 }

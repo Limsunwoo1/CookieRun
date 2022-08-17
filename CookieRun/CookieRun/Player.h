@@ -25,6 +25,7 @@ public:
     void JumpAction(float InDeltaTime, int Speed);
     void DoubleJumpAction(float InDeltaTime, int Speed);
     void SetHP(CHpBar* InHP) { HP = InHP; };
+    CHpBar* GetPlayerHP() {return HP;};
     bool CheckDiving(float InDeltaTime);
 };
 

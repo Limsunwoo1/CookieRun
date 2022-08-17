@@ -86,6 +86,12 @@
     <Filter Include="Object\CGroundObject">
       <UniqueIdentifier>{626bc615-8773-4e9f-8697-7bc11d4c0943}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Object\Jelly">
+      <UniqueIdentifier>{74fb62e5-ae0f-48f2-8e49-cf71c34e7149}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\OBST">
+      <UniqueIdentifier>{b41ec131-5925-4359-b3cd-83f87383dc12}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Define.h">
@@ -232,8 +238,13 @@
     <ClInclude Include="CGroundObject.h">
       <Filter>Object\CGroundObject</Filter>
     </ClInclude>
-    <ClInclude Include="COBST.h" />
-    <ClInclude Include="CJellyObject.h" />
+    <ClInclude Include="CJellyObject.h">
+      <Filter>Object\Jelly</Filter>
+    </ClInclude>
+    <ClInclude Include="COBST.h">
+      <Filter>Object\OBST</Filter>
+    </ClInclude>
+    <ClInclude Include="CPAUSE.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TimerManager.cpp">
@@ -347,8 +358,13 @@
     <ClCompile Include="CGroundObject.cpp">
       <Filter>Object\CGroundObject</Filter>
     </ClCompile>
-    <ClCompile Include="COBST.cpp" />
-    <ClCompile Include="CJellyObject.cpp" />
+    <ClCompile Include="CJellyObject.cpp">
+      <Filter>Object\Jelly</Filter>
+    </ClCompile>
+    <ClCompile Include="COBST.cpp">
+      <Filter>Object\OBST</Filter>
+    </ClCompile>
+    <ClCompile Include="CPAUSE.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="GameFramework.rc">

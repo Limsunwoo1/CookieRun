@@ -64,8 +64,8 @@ void CPlayer::Update(float InDeltaTime)
 	}
 	else if (!HP)
 	{
-		mVel += gravity * InDeltaTime;
-		Position += mVel * InDeltaTime * Upspeed;
+		/*mVel += gravity * InDeltaTime;
+		Position += mVel * InDeltaTime * Upspeed;*/
 
 		return;
 	}
@@ -161,7 +161,9 @@ void CPlayer::Collision(const CObject* InOtherObject)
 		}
 		else if(CurAnimName == "DEAD")
 		{
-		
+		/*	Position.y = InOtherObject->GetPosition().y - (InOtherObject->GetScale().y * 0.75f);
+			mVel = Vector2D(0.0f, 0.0f);*/
+			return;
 		}
 		else
 		{
