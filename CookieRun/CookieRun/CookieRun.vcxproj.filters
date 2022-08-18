@@ -92,6 +92,9 @@
     <Filter Include="Object\OBST">
       <UniqueIdentifier>{b41ec131-5925-4359-b3cd-83f87383dc12}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Scene\PAUSE">
+      <UniqueIdentifier>{ca214b97-2b55-4928-9028-30705ebfec8b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Define.h">
@@ -244,7 +247,9 @@
     <ClInclude Include="COBST.h">
       <Filter>Object\OBST</Filter>
     </ClInclude>
-    <ClInclude Include="CPAUSE.h" />
+    <ClInclude Include="CPAUSE.h">
+      <Filter>Scene\PAUSE</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TimerManager.cpp">
@@ -364,7 +369,9 @@
     <ClCompile Include="COBST.cpp">
       <Filter>Object\OBST</Filter>
     </ClCompile>
-    <ClCompile Include="CPAUSE.cpp" />
+    <ClCompile Include="CPAUSE.cpp">
+      <Filter>Scene\PAUSE</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="GameFramework.rc">

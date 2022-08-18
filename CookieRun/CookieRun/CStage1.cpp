@@ -133,7 +133,6 @@ void CStage1::Update(float InDeltaTime)
 	else
 	{
 		mPlayer->Update(InDeltaTime);
-
 	}
 }
 

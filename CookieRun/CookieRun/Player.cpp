@@ -183,7 +183,7 @@ void CPlayer::Collision(const CObject* InOtherObject)
 			return;
 
 		Vector2D DeleteHP = HP->GetScale();
-		DeleteHP.x -= (HP->GetDynamic_Width() * 3);
+		DeleteHP.x -= (HP->GetDynamic_Width() * 30);
 		HP->SetScale(DeleteHP);
 
 		delta -= 2.0f;
