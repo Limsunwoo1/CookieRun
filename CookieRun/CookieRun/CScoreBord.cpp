@@ -70,9 +70,9 @@ void CScoreBord::Update(float InDeltaTime)
 
 	buf[0] = Score;
 
-	if (Score > 9)
+	if (Score >= 10)
 	{
-		Score = 0;
+		Score -= 10;
 		buf[0] = Score;
 		buf[1]++;
 

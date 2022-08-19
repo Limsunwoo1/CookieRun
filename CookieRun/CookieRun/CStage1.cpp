@@ -148,6 +148,8 @@ void CStage1::Update(float InDeltaTime)
 			COutPutScore* Out = new COutPutScore();
 			Out->Init(OutScore->GetSaveScore());
 
+			int i = OutScore->GetSaveScore();
+			LOG(STRING("%d", i));
 			EventInfo SetScene;
 			SetScene.Type = EVENT_TYPE::CHANGE_SCENE;
 			SetScene.Parameter = Out;

@@ -17,7 +17,8 @@ CJellyObject::~CJellyObject()
 {
 	int jelly = Score->GetScore();
 	Score->SetScore(++jelly);
-	Score->SetSaveScore(Score->GetSaveScore() + 1);
+	int savejelly = Score->GetSaveScore();
+	Score->SetSaveScore(++savejelly);
 }
 
 void CJellyObject::Update(float InDeltaTIme)
