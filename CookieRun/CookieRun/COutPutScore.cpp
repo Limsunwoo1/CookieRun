@@ -35,26 +35,27 @@ void COutPutScore::Init(int InScore)
 	OkButton->SetButtonFunc(BUTTON_STATE::LBUTTON_RELEASE, Exit);
 	AddObject(OBJ_LAYER::UI, OkButton);
 
-	deltatime = -2.0f;
+	deltatime = -1.0f;
 
 	int push = CBankManager::GetInstance()->GetMoney();
-	CBankManager::GetInstance()->SetMoney(push + Scorebord->GetSaveScore());
+	CBankManager::GetInstance()->SetMoney(Int_Score + push);
 }
 
 void COutPutScore::Update(float DeltaTIme)
 {
 	CScene::Update(DeltaTIme);
 
+	if (Int_Score <= 0)
+		return;
+
 	deltatime += DeltaTIme;
 
 	if (deltatime > 0.01f)
 	{
-		if (Int_Score <= 0)
-			return;
-
 		int jelly = Scorebord->GetScore();
 		Scorebord->SetScore(++jelly);
 		--Int_Score;
+
 		deltatime -= 0.01f;
 	}
 }

@@ -19,7 +19,8 @@ static Vector2D Dmvel = Vector2D(0.0f, -2.5f);
 CPlayer::CPlayer() : CAnimationObject(Vector2D{ 100, 100 }, Vector2D{ 50, 50 }),
 HP(nullptr),
 delta(2.f),
-diving(false)
+diving(false),
+CurCollsion(false)
 {
 	mVel = Vector2D(0.0f, 2.5f);
 }
@@ -27,7 +28,8 @@ diving(false)
 CPlayer::CPlayer(Vector2D InVector, Vector2D InScale) : CAnimationObject(Vector2D{ InVector.x , InVector.y }, Vector2D{ InScale.x, InScale.y }),
 HP(nullptr),
 delta(2.f),
-diving(false)
+diving(false),
+CurCollsion(false)
 {
 	mVel = Vector2D(0.0f, 2.5f);
 }
@@ -188,12 +190,39 @@ void CPlayer::Collision(const CObject* InOtherObject)
 			HP->SetScale(DeleteHP);
 
 			delta -= 2.0f;
+
+			return;
+		}
+	}
+
+	if (InOtherObject->GetObjectLayer() == OBJ_LAYER::OBSTACLE)
+	{
+		if (delta < 2.0f)
+		{
+			CurCollsion = true;
 		}
 	}
 }
 
 void CPlayer::Render(HDC InHdc)
 {
+	if (CurCollsion)
+	{
+		static int cnt = 0;
+		if (cnt % 2 == 0)
+		{
+			CAnimationObject::Render(InHdc);
+		}
+
+		if (cnt >= 500)
+		{
+			CurCollsion = false;
+			cnt = 0;
+			return;
+		}
+		cnt++;
+		return;
+	}
 	CAnimationObject::Render(InHdc);
 }
 

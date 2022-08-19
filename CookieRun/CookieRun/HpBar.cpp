@@ -26,10 +26,10 @@ void CHpBar::Update(float InDeltaTime)
 		return;
 	}
 
-    if (Delta > 1.0f)
+    if (Delta > 0.1f)
     {
-        Scale.x -= mDynamic_Width * 100;
-        Delta -= 1.0f;
+        Scale.x -= mDynamic_Width;
+        Delta -= 0.1f;
     }
 
 }

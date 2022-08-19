@@ -182,7 +182,7 @@ void CScoreBord::ReSetScore()
 					{
 						MaxCount = bufsize;
 					}
-					return;
+					break;
 				}
 			}
 		}

@@ -3,21 +3,21 @@
 #include "CTexture.h"
 
 CJellyObject::CJellyObject() : CSpriteObject(Vector2D{ 100,100 }, Vector2D{ 50,50 }),
-Score(nullptr),
-FirstCollsion(false)
+Score(nullptr)
 {
 
 }
 
 CJellyObject::CJellyObject(Vector2D InPos, Vector2D InScale) : CSpriteObject(Vector2D{InPos.x, InPos.y}, Vector2D{InScale.x, InScale.y}),
-Score(nullptr),
-FirstCollsion(false)
+Score(nullptr)
 {
 
 }
 CJellyObject::~CJellyObject()
 {
-
+	int jelly = Score->GetScore();
+	Score->SetScore(++jelly);
+	Score->SetSaveScore(Score->GetSaveScore() + 1);
 }
 
 void CJellyObject::Update(float InDeltaTIme)
@@ -44,19 +44,6 @@ void CJellyObject::Render(HDC Inhdc)
 
 void CJellyObject::Collision(const CObject* InOtherObject)
 {
-	if (!Score)
-		return;
-	if (FirstCollsion)
-		return;
-	else
-	{
-		FirstCollsion = true;
-	}
-
-	int jelly = Score->GetScore();
-	Score->SetScore(++jelly);
-	Score->SetSaveScore(Score->GetSaveScore() + 1);
-
 	EventInfo evnt;
 	evnt.Type = EVENT_TYPE::DELETE_OBJECT;
 	evnt.Parameter = new OBJ_LAYER(OBJ_LAYER::ITEM);

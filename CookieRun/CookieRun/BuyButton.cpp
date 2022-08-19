@@ -18,8 +18,15 @@ void CBuyButton::MouseLButtonPress()
 	int change = CBankManager::GetInstance()->GetMoney();
 	if (change - Pet->GetPrice() < 0)
 		return;
-	else if(change - Pet->GetPrice() >= 0)
+	else if (change - Pet->GetPrice() >= 0)
+	{
 		CBankManager::GetInstance()->SetMoney(change - Pet->GetPrice());
+
+		if (CBankManager::GetInstance()->GetScore())
+		{
+			CBankManager::GetInstance()->GetScore()->ReSetScore();
+		}
+	}
 
 	CButton::MouseLButtonPress();
 	this->SetTexture(ClickTexture);

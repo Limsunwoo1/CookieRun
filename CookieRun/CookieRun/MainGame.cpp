@@ -59,11 +59,11 @@ void CMainGame::Init(HWND InHwnd, HINSTANCE InHInstance)
 	CResourceManager::GetInstance()->Init(HInstance, Hdc);
 	CTimerManager::GetInstance()->Init();
 	CKeyManager::GetInstance()->Init();
+	CBankManager::GetInstance()->Init();
 	CSceneManager::GetInstance()->Init();
 	CCollisionManager::GetInstance()->Init();
 	CEventManager::GetInstance()->Init();
 	CItemManager::GetInstance()->Init();
-	CBankManager::GetInstance()->Init();
 	//
 
 	// 더블버퍼링
@@ -93,9 +93,9 @@ void CMainGame::Update(float InDeltaTime)
 	// ====================================
 	CKeyManager::GetInstance()->Update(InDeltaTime);
 	CItemManager::GetInstance()->Update(InDeltaTime);
+	CBankManager::GetInstance()->Update(InDeltaTime);
 	CSceneManager::GetInstance()->Update(InDeltaTime);
 	CCollisionManager::GetInstance()->Update(InDeltaTime);
-	CBankManager::GetInstance()->Update(InDeltaTime);
 	// ====================================
 
 	// Render 되기 직전에 마지막 업데이트

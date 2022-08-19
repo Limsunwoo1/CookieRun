@@ -12,6 +12,7 @@ private:
     
     float delta;
     bool diving;
+    bool CurCollsion;
 public:
     CPlayer();
     CPlayer(Vector2D InVector, Vector2D InScale);

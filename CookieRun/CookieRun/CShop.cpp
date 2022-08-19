@@ -7,6 +7,8 @@
 #include "CTitleScene.h"
 #include "EventManager.h"
 #include "CBankManager.h"
+#include "UtilLog.h"
+#include "UtilString.h"
 #include <map>
 CShop::CShop()
 {
@@ -39,6 +41,9 @@ void CShop::Init()
 		Money->SetPosition(Vector2D{ 600,200 });
 		Money->SetSaveScore(CBankManager::GetInstance()->GetMoney());
 		Money->ReSetScore();
+
+		int i = Money->GetSaveScore();
+		LOG(STRING("%d", i));
 	}
 
 	///////////////////////////////////////////////////////////////////////////////
@@ -73,6 +78,7 @@ void CShop::Clear()
 void CShop::Update(float InDeltaTime)
 {
 	CScene::Update(InDeltaTime);
+	Money->Update(InDeltaTime);
 	/*std::map<String, CPetObject*> InitVct = CItemManager::GetInstance()->GetItemList();
 	for (auto iter : InitVct)
 	{

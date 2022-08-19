@@ -35,6 +35,7 @@ void CBankManager::Update(float InDeltaTIme)
 	{
 		Money = 0;
 	}
+	Score->SetSaveScore(Money);
 }
 
 void CBankManager::Render(HDC Inhdc)

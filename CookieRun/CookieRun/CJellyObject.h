@@ -7,8 +7,6 @@ class CJellyObject :
 {
 private:
     CScoreBord* Score;
-
-    bool FirstCollsion;
 public:
     CJellyObject();
     CJellyObject(Vector2D InPos, Vector2D InScale);
