@@ -3,13 +3,15 @@
 #include "CTexture.h"
 
 CJellyObject::CJellyObject() : CSpriteObject(Vector2D{ 100,100 }, Vector2D{ 50,50 }),
-Score(nullptr)
+Score(nullptr),
+FirstCollsion(false)
 {
 
 }
 
 CJellyObject::CJellyObject(Vector2D InPos, Vector2D InScale) : CSpriteObject(Vector2D{InPos.x, InPos.y}, Vector2D{InScale.x, InScale.y}),
-Score(nullptr)
+Score(nullptr),
+FirstCollsion(false)
 {
 
 }
@@ -44,9 +46,16 @@ void CJellyObject::Collision(const CObject* InOtherObject)
 {
 	if (!Score)
 		return;
+	if (FirstCollsion)
+		return;
+	else
+	{
+		FirstCollsion = true;
+	}
 
 	int jelly = Score->GetScore();
 	Score->SetScore(++jelly);
+	Score->SetSaveScore(Score->GetSaveScore() + 1);
 
 	EventInfo evnt;
 	evnt.Type = EVENT_TYPE::DELETE_OBJECT;

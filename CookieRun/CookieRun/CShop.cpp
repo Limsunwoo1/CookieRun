@@ -2,13 +2,16 @@
 #include "PetObject.h"
 #include "CItemManager.h"
 #include "BuyButton.h"
+#include "CScoreBord.h"
 #include "CSceneManager.h"
 #include "CTitleScene.h"
 #include "EventManager.h"
+#include "CBankManager.h"
 #include <map>
 CShop::CShop()
 {
 	SeleteItem = nullptr;
+	Money = nullptr;
 	SeletItemName = "NONE";
 	xPos = 150;
 }
@@ -25,10 +28,19 @@ void CShop::Init()
 	BackGround->SetTexture("SHOPMAIN");
 	AddObject(OBJ_LAYER::BACKGROUND, BackGround);
 
-	CButton* ExitBUtton = new CButton(Vector2D{ 700,200 }, Vector2D{ 50,50 });
+	CButton* ExitBUtton = new CButton(Vector2D{ 750,200 }, Vector2D{ 50,50 });
 	ExitBUtton->SetTexture("EXIT");
 	ExitBUtton->SetButtonFunc(BUTTON_STATE::LBUTTON_RELEASE, Exit);
 	AddObject(OBJ_LAYER::UI, ExitBUtton);
+
+	if (CBankManager::GetInstance()->GetScore())
+	{
+		Money = CBankManager::GetInstance()->GetScore();
+		Money->SetPosition(Vector2D{ 600,200 });
+		Money->SetSaveScore(CBankManager::GetInstance()->GetMoney());
+		Money->ReSetScore();
+	}
+
 	///////////////////////////////////////////////////////////////////////////////
 	std::map<String,CPetObject*> InitVct = CItemManager::GetInstance()->GetItemList();
 
@@ -66,6 +78,12 @@ void CShop::Update(float InDeltaTime)
 	{
 		
 	}*/
+}
+
+void CShop::Render(HDC InHdc)
+{
+	CScene::Render(InHdc);
+	Money->Render(InHdc);
 }
 
 void CShop::Exit()

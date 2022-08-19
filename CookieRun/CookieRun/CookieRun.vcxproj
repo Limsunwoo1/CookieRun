@@ -152,6 +152,7 @@
     <ClInclude Include="CJellyObject.h" />
     <ClInclude Include="COBST.h" />
     <ClInclude Include="CollisionManager.h" />
+    <ClInclude Include="COutPutScore.h" />
     <ClInclude Include="CPAUSE.h" />
     <ClInclude Include="CrashHandler.h" />
     <ClInclude Include="CScene.h" />
@@ -205,6 +206,7 @@
     <ClCompile Include="CJellyObject.cpp" />
     <ClCompile Include="COBST.cpp" />
     <ClCompile Include="CollisionManager.cpp" />
+    <ClCompile Include="COutPutScore.cpp" />
     <ClCompile Include="CPAUSE.cpp" />
     <ClCompile Include="CrashHandler.cpp" />
     <ClCompile Include="CScene.cpp" />

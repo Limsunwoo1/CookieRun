@@ -22,5 +22,7 @@ public:
 	void Init();
 	void Update(float InDeltaTIme);
 	void Render(HDC Inhdc);
+
+	CScoreBord* GetScore() { return Score; };
 };
 

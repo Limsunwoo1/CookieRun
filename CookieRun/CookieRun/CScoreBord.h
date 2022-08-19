@@ -8,6 +8,7 @@ class CTexture;
 class CScoreBord :
     public CUI
 {
+    MEMBER(int, SaveScore)
 private:
     std::vector<String> FilePathList;
 
@@ -27,4 +28,6 @@ public:
 
     int GetScore() const { return Score; };
     void SetScore(int jelly) {Score = jelly;};
+
+    void ReSetScore();
 };

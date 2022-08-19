@@ -9,7 +9,7 @@ class CStage1 :
 {
 private:
     CPlayer* mPlayer;
-
+    CScoreBord* OutScore;
 public:
     CStage1();
     virtual ~CStage1();

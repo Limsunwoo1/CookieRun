@@ -1,4 +1,5 @@
 #include "CBankManager.h"
+#include "CScoreBord.h"
 #include "UtilLog.h"
 #include <iostream>
 #include "Define.h"
@@ -16,11 +17,14 @@ CBankManager::CBankManager()
 }
 CBankManager::~CBankManager()
 {
-
+	delete Score;
 }
 
 void CBankManager::Init()
 {
+	CScoreBord* InItScore = new CScoreBord();
+	Score = InItScore;
+	Score->SetSaveScore(Money);
 	//FILE_OUTPUT(Buff, "NumBerList.txt");
 	LOG(Buff);
 }
@@ -31,7 +35,6 @@ void CBankManager::Update(float InDeltaTIme)
 	{
 		Money = 0;
 	}
-
 }
 
 void CBankManager::Render(HDC Inhdc)

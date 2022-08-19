@@ -2,6 +2,9 @@
 #include "CScene.h"
 #include "PetObject.h"
 #include <map>
+
+class CScoreBord;
+
 class CShop :
     public CScene
 {
@@ -15,6 +18,7 @@ private:
     String SeletItemName;
 
     int xPos;
+    CScoreBord* Money;
 public:
     CShop();
     virtual ~CShop();
@@ -23,6 +27,7 @@ public:
     virtual void Clear() override;
 
     virtual void Update(float InDeltaTime) override;
+    virtual void Render(HDC InHdc) override;
     static void Exit();
 };
 

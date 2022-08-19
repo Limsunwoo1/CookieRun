@@ -8,6 +8,7 @@
 #include "CScoreBord.h"
 #include "SpriteObject.h"
 #include "COBST.h"
+#include "COutPutScore.h"
 #include "CSceneManager.h"
 #include "ResourceManager.h"
 #include "EventManager.h"
@@ -24,6 +25,8 @@ using namespace std;
 
 CStage1::CStage1()
 {
+	mPlayer = nullptr;
+	OutScore = nullptr;
 }
 
 CStage1::~CStage1()
@@ -58,11 +61,12 @@ void CStage1::Init()
 	AddObject(OBJ_LAYER::PLAYER, Player);
 
 	CScoreBord* score = new CScoreBord();
+	OutScore = score;
 	AddObject(OBJ_LAYER::UI, score);
 
-	CButton* Jelly = new CButton(Vector2D{(int)(score->GetPosition().x - 100) ,50},Vector2D{50,50});
-	Jelly->SetTexture("JELLY");
-	AddObject(OBJ_LAYER::UI, Jelly);  //jelly obj 추가 예정
+	//CButton* Jelly = new CButton(Vector2D{(int)(score->GetPosition().x - 100) ,50},Vector2D{50,50});
+	//Jelly->SetTexture("JELLY");
+	//AddObject(OBJ_LAYER::UI, Jelly);  //jelly obj 추가 예정
 
 	CButton* pause = new CButton(Vector2D{ 750,50 }, Vector2D{ 50,50 });
 	pause->SetTexture("EXIT");
@@ -133,6 +137,23 @@ void CStage1::Update(float InDeltaTime)
 	else
 	{
 		mPlayer->Update(InDeltaTime);
+
+		static float deta = 0.0f;
+		deta += InDeltaTime;
+		
+		if (deta > 3.0f)
+		{
+			deta = 0.0f;
+
+			COutPutScore* Out = new COutPutScore();
+			Out->Init(OutScore->GetSaveScore());
+
+			EventInfo SetScene;
+			SetScene.Type = EVENT_TYPE::CHANGE_SCENE;
+			SetScene.Parameter = Out;
+
+			CEventManager::GetInstance()->AddEvent(SetScene);
+		}
 	}
 }
 

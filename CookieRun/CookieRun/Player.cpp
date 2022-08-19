@@ -176,17 +176,19 @@ void CPlayer::Collision(const CObject* InOtherObject)
 		mVel = Vector2D(0.0f, 2.5f);
 		return;
 	}
-
-	if (delta > 2.0f)
+	else if (delta > 2.0f)
 	{
 		if (!HP)
 			return;
 
-		Vector2D DeleteHP = HP->GetScale();
-		DeleteHP.x -= (HP->GetDynamic_Width() * 30);
-		HP->SetScale(DeleteHP);
+		if (InOtherObject->GetObjectLayer() == OBJ_LAYER::OBSTACLE)
+		{
+			Vector2D DeleteHP = HP->GetScale();
+			DeleteHP.x -= (HP->GetDynamic_Width() * 30);
+			HP->SetScale(DeleteHP);
 
-		delta -= 2.0f;
+			delta -= 2.0f;
+		}
 	}
 }
 
