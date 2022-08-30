@@ -3,6 +3,7 @@
 #include "Object.h"
 #include <vector>
 #include <map>
+#include <functional>
 
 class CScene : public CBase
 {
@@ -34,5 +35,7 @@ public:
 	virtual void Render(HDC InHdc);
 	void CollisionRender(HDC InHdc);
 	void ClearObject();
+
+	void ForEachObject(const std::function<void(CObject*)>& InPredicate);
 };
 

@@ -2,6 +2,7 @@
 #include "Define.h"
 #include "Object.h"
 #include <vector>
+#include <functional>
 
 class CScene;
 
@@ -26,6 +27,8 @@ public:
 	void SetReGame(CScene* InScene);
 	CScene* GetReGame() { return ReGame; };
 	void ClearReGame();
+
+	void ForEachObject(const std::function<void(CObject*)>& InPredicate);
 
     const std::vector<CObject*>& Get_Object(OBJ_LAYER InLayer);
 };

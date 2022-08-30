@@ -116,3 +116,17 @@ void CScene::ClearObject()
 
 	CheckCollisionLayer.clear();
 }
+
+void CScene::ForEachObject(const std::function<void(CObject*)>& InPredicate)
+{
+	for (int layer = 0; layer < (int)OBJ_LAYER::MAX; ++layer)
+	{
+		for (CObject* object : OBJvector[layer])
+		{
+			if (!object)
+				continue;
+
+			InPredicate(object);
+		}
+	}
+}

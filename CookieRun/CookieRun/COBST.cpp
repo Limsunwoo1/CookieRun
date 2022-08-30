@@ -2,6 +2,12 @@
 #include "CTexture.h"
 #include "CSceneManager.h"
 #include <vector>
+
+void Test(CObject* InObject)
+{
+
+}
+
 COBST::COBST() : CSpriteObject()
 {
 
@@ -24,6 +30,26 @@ void COBST::Update(float InDeltaTIme)
 
 	CSpriteObject::Update(InDeltaTIme);
 	Position.x -= InDeltaTIme * 300;
+
+	//const auto& objectList = CSceneManager::GetInstance()->Get_Object(OBJ_LAYER::ITEM);
+	//for (const CObject* object : objectList)
+	//{
+	//	//~~~
+	//}
+
+	//int count = 0;
+	//CSceneManager::GetInstance()->ForEachObject( [] ( CObject* InObject ) 
+	//{
+	//	if (!InObject)
+	//		return;
+
+	//	count++;
+	//} );
+
+	//if (count > 3)
+	//{
+	//	LOG("!!!!");
+	//}
 }
 
 void COBST::Render(HDC Inhdc)

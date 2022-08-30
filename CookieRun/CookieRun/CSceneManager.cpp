@@ -112,3 +112,8 @@ void CSceneManager::ClearReGame()
 		ReGame = nullptr;
 	}
 }
+
+void CSceneManager::ForEachObject(const std::function<void(CObject*)>& InPredicate)
+{
+	CurScene->ForEachObject(InPredicate);
+}
