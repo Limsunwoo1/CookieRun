@@ -92,9 +92,9 @@ void CStage1::Init()
 	}		
 	while (!readFile.eof())
 	{
-		if (cnt >= 17)
+		if (cnt >= 19)
 		{
-			cnt -= 16;
+			cnt -= 18;
 			x += 800;
 		}
 
@@ -166,7 +166,7 @@ void CStage1::Render(HDC Inhdc)
 
 void CStage1::MapDesign(String Instr, int cnt, int x, CScoreBord* InSCor)
 {
-	float height = 800.f / 15.f;
+	float height = 800.f / 17.f;
 	float width = 800.f / 20.f;
 	CGroundObject* Stage1Road;
 	for (int i = 0; i < Instr.size(); i++)
